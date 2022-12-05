@@ -1,0 +1,34 @@
+{
+  "name": "@tinybirdco/function-analytics-dashboard",
+  "version": "0.1.0",
+  "description": " Vercel edge functions analytics dashboard",
+  "license": "MIT",
+  "author": "Tinybird team",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@tremor/react": "^1.2.0",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "cross-fetch": "^3.1.5",
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.4",
+    "moment": "^2.29.4",
+    "next": "13.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swr": "^1.3.0",
+    "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4"
+  }
+}

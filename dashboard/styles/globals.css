@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: block;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/Inter-roman-latin.var.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'iA Writer Mono S';
+  font-weight: 100 900;
+  font-display: block;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/iAWriterMonoS-Regular.woff2) format('woff2');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset tremor font-family */
+:root {
+  --tr-font-family: 'Inter var' !important;
+}
