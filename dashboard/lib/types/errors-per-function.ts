@@ -14,7 +14,5 @@ export type ErrorsPerFunction = {
   data: ErrorsPerFunctionQueryData[]
   errorCountAverage: number
   errorCountPerTime: { event_ts: string; was_error: number }[]
-  errorCountPerFunctionTotal: { function_name: string; count: number }[]
-  errorCountPerFunctionOverAverage: { name: string; value: number }[]
   errorCountPerFunctionAverage: { name: string; value: number }[]
 }

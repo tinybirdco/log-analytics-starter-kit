@@ -43,18 +43,11 @@ async function getErrorsPerFunction(
     .map(({ function_name, count }) => ({ name: function_name, value: count }))
     .sort((a, b) => b.value - a.value)
 
-  const errorCountPerFunctionOverAverage = errorCountPerFunctionAverage
-    .filter(d => d.value > errorCountAverage)
-    .concat({ name: 'average', value: errorCountAverage })
-    .sort((a, b) => b.value - a.value)
-
   return {
     data,
     errorCountAverage,
     errorCountPerTime,
-    errorCountPerFunctionTotal,
     errorCountPerFunctionAverage,
-    errorCountPerFunctionOverAverage,
   }
 }
 

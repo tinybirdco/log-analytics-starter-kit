@@ -21,9 +21,7 @@ export default function Home() {
       <Meta />
 
       <div className="bg-body min-h-screen py-5 px-5 sm:px-10 text-sm leading-5 text-secondary">
-        <header></header>
-
-        <main>
+        <header>
           <img src="/icon.png" alt="" width={24} height={24} />
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-7 mb-10 w-f">
             <h1 className="font-semibold text-lg leading-6">
@@ -46,7 +44,9 @@ export default function Home() {
               </div>
             )}
           </div>
+        </header>
 
+        <main>
           <div className="mb-6">
             <TabList
               defaultValue="api-tester"
