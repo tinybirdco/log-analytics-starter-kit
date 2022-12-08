@@ -11,7 +11,7 @@ import { logger } from '../../../lib/logger'
  *         description: Returns success message
  */
 export default function genericFunction(req: NextRequest) {
-  logger.info('genericFunction', req)
+  logger.info('Loggeding something about genericFunction!', req)
 
   return new Response(
     JSON.stringify({
