@@ -1,9 +1,26 @@
 import { NextRequest, userAgent } from 'next/server'
 
-export async function track(
+
+export class logger {
+
+  async info(message: string, request: NextRequest) {
+    log(request, 'INFO', message)
+  }
+
+  async warn(message: string, request: NextRequest) {
+    log(request, 'WARN', message)
+  }
+
+  async error(message: string, request: NextRequest) {
+    log(request, 'ERROR', message)
+  }
+
+}
+
+async function log(
   req: NextRequest,
-  functionName: string,
-  functionData?: object
+  logLevel: string,
+  logMessage: string
 ) {
   const { isBot, browser, device, engine, os, cpu } = userAgent(req)
 
@@ -44,10 +61,8 @@ export async function track(
     osname: os.name ? os.name : 'unknown',
     osverison: os.version ? os.version : 'unknown',
     cpuarchitecture: cpu.architecture ? cpu.architecture : 'unknown',
-    function_name: functionName,
-    function_data: functionData
-      ? JSON.stringify(functionData)
-      : JSON.stringify({}),
+    log_level: logLevel,
+    log_message: logMessage,
   }
 
   await sendToTinybird(data)

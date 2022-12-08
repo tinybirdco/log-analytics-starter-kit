@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { track } from '../../../lib/tracker'
+import { track } from '../../../lib/logger'
 
 /**
  * @swagger
