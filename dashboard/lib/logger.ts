@@ -3,15 +3,15 @@ import { NextRequest, userAgent } from 'next/server'
 
 export class logger {
 
-  async info(message: string, request: NextRequest) {
+  static async info(message: string, request: NextRequest) {
     log(request, 'INFO', message)
   }
 
-  async warn(message: string, request: NextRequest) {
+  static async warn(message: string, request: NextRequest) {
     log(request, 'WARN', message)
   }
 
-  async error(message: string, request: NextRequest) {
+  static async error(message: string, request: NextRequest) {
     log(request, 'ERROR', message)
   }
 
