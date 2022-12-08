@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "VEFA Swagger API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/example/genericFunction": {
+      "get": {
+        "description": "Tracks genericFunction",
+        "responses": {
+          "200": {
+            "description": "Returns success message"
+          }
+        }
+      }
+    },
+    "/api/example/getProduct": {
+      "get": {
+        "description": "Returns product",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "query",
+            "description": "Product's id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tracks product and returns success message"
+          },
+          "400": {
+            "description": "Tracks error and returns error message"
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
