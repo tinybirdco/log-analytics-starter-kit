@@ -4,7 +4,7 @@ SQL >
     SELECT
         toStartOfHour(event_ts) AS hour,
         countState() AS total
-    FROM functions_analytics
+    FROM function_logs
     GROUP BY hour
     ORDER BY hour ASC
 

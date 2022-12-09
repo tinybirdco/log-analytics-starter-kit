@@ -5,24 +5,25 @@ SQL >
     SELECT
         toStartOfHour(event_ts) as hour,
         {{ column(per_filter, "osname") }},
-        count() as total
-    FROM functions_analytics
+        count() as total,
+        {{ String(per_filter, "osname") }} as per_filter
+    FROM function_logs
     WHERE
         log_level == 'ERROR'
         {% if defined(date_from) and defined(date_to) %}
             AND hour
             BETWEEN {{
-                DateTime(
+                Date(
                     date_from,
-                    "2020-09-09 10:10:10",
+                    "2020-09-09",
                     description="Starting date range",
                     required=True,
                 )
             }}
             and {{
-                DateTime(
+                Date(
                     date_to,
-                    "2020-09-09 10:10:10",
+                    "2020-09-10",
                     description="Starting date range",
                     required=True,
                 )

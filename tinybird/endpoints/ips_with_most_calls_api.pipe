@@ -1,9 +1,9 @@
-NODE total_errors_per_function
+NODE endpoint
 SQL >
 
     %
-    SELECT function_name, countMerge(total) as total
-    FROM errors_per_function_per_hour
+    SELECT toStartOfHour(minute) as hour, ip_address, countMerge(total) AS total
+    FROM calls_by_ip_per_minute
     WHERE
         1
         {% if defined(date_from) and defined(date_to) %}
@@ -26,13 +26,8 @@ SQL >
             }}
         {% else %} {{ error("Must supply date_from & date_to params") }}
         {% end %}
-    GROUP BY function_name
-
-
-
-NODE endpoint
-SQL >
-
-    SELECT avg(total) as average FROM total_errors_per_function
+    GROUP BY hour, ip_address
+    ORDER BY total DESC
+    LIMIT 10
 
 

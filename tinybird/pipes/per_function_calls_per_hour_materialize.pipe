@@ -5,7 +5,7 @@ SQL >
         path(url) AS function_name,
         toStartOfHour(event_ts) AS hour,
         countState() AS total
-    FROM functions_analytics
+    FROM function_logs
     GROUP BY
         hour,
         function_name

@@ -2,24 +2,24 @@ NODE endpoint
 SQL >
 
     %
-    SELECT function_name, countMerge(total)
+    SELECT function_name, countMerge(total) as total
     FROM per_function_calls_per_hour
     WHERE
         1
         {% if defined(date_from) and defined(date_to) %}
             AND hour
             BETWEEN {{
-                DateTime(
+                Date(
                     date_from,
-                    "2020-09-09 10:10:10",
+                    "2020-09-09",
                     description="Starting date range",
                     required=True,
                 )
             }}
             and {{
-                DateTime(
+                Date(
                     date_to,
-                    "2020-09-09 10:10:10",
+                    "2020-09-10",
                     description="Starting date range",
                     required=True,
                 )
