@@ -1,13 +1,11 @@
-export type ErrorsPerParamQueryData = {
-  error_count: number
-  function_name: string
-  param: string
+export type ErrorPerParamQueryData = {
+  hour: Date
+  total: number
+} & {
+  [Param in ErrorParamType]?: string
 }
 
-export type ErrorsPerParam = {
-  data: ErrorsPerParamQueryData[]
-  errorCountPerParam: { name: string; value: number }[]
-}
+export type ErrorPerParam = { name: string; value: number }[]
 
 const ALL_ERROR_PARAMS = [
   'osname',
@@ -27,7 +25,7 @@ export function isErrorParam(
   return ALL_ERROR_PARAMS.includes(errorParam as ErrorParamType)
 }
 
-export const ERROR_PARAM_OPTIONS = [
+export const ERROR_PARAM_OPTIONS: { text: string; value: ErrorParamType }[] = [
   {
     text: 'OS',
     value: 'osname',
@@ -43,9 +41,5 @@ export const ERROR_PARAM_OPTIONS = [
   {
     text: 'Country',
     value: 'country',
-  },
-  {
-    text: 'Referer',
-    value: 'referer',
   },
 ]

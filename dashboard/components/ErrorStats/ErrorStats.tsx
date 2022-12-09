@@ -14,24 +14,29 @@ import {
 } from '@tremor/react'
 import Loader from '../Loader'
 
-import useErrorsPerFunction from '../../lib/hooks/api/use-errors-per-functions'
-import useErrorsPerParam from '../../lib/hooks/api/use-errors-per-param'
-import { ErrorsPerFunction } from '../../lib/types/errors-per-function'
-import { ERROR_PARAM_OPTIONS } from '../../lib/types/errors-per-param'
+import useAverageErrorCount from '../../lib/hooks/api/use-average-error-count'
+import useErrorFrequency from '../../lib/hooks/api/use-error-frequency'
+import useFunctionErrors from '../../lib/hooks/api/use-function-errors'
+import useErrorPer from '../../lib/hooks/api/use-error-per'
+import { ERROR_PARAM_OPTIONS } from '../../lib/types/error-per-param'
 import { cx, formatNumber } from '../../lib/utils'
 
 export default function ErrorStats() {
-  const { data: errorsPerFunctionData, status: errorsPerFunctionStatus } =
-    useErrorsPerFunction()
+  const { data: averageErrorCountData, status: averageErrorCountStatus } =
+    useAverageErrorCount()
+  const { data: errorFrequencyData, status: errorFrequencyStatus } =
+    useErrorFrequency()
+  const { data: functionErrorsData, status: functionErrorsStatus } =
+    useFunctionErrors()
   const {
     data: errorsPerParamData,
     status: errorsPerParamStatus,
     errorBy,
     setErrorBy,
-  } = useErrorsPerParam()
-  const [selectedTab1, setSelectedTab1] = useState<
-    keyof ErrorsPerFunction & string
-  >('errorCountPerTime')
+  } = useErrorPer()
+  const [selectedTab, setSelectedTab] = useState<
+    'ErrorsFrequency' | 'FunctionErrors'
+  >('ErrorsFrequency')
 
   return (
     <Card>
@@ -39,23 +44,18 @@ export default function ErrorStats() {
 
       <div className="my-6">
         <Bold>Average Error Count</Bold>
-        <Metric>
-          {formatNumber(errorsPerFunctionData?.errorCountAverage, 0)}
-        </Metric>
+        <Metric>{formatNumber(averageErrorCountData, 0)}</Metric>
       </div>
 
       <div className="grid grid-cols-2 gap-10">
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-9">
           <div className="hidden sm:block">
             <TabList
-              defaultValue="errorCountPerTime"
-              handleSelect={setSelectedTab1}
+              defaultValue="ErrorsFrequency"
+              handleSelect={setSelectedTab}
             >
-              <Tab value="errorCountPerTime" text="Error Frequency" />
-              <Tab
-                value="errorCountPerFunctionAverage"
-                text="Function Errors"
-              />
+              <Tab value="ErrorsFrequency" text="Error Frequency" />
+              <Tab value="FunctionErrors" text="Function Errors" />
             </TabList>
           </div>
 
@@ -63,18 +63,18 @@ export default function ErrorStats() {
             <div
               className={cx(
                 'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-                selectedTab1 !== 'errorCountPerTime' && 'sm:hidden'
+                selectedTab !== 'ErrorsFrequency' && 'sm:hidden'
               )}
             >
               <Bold>Error Frequency</Bold>
 
-              {errorsPerFunctionStatus === 'loading' ? (
+              {errorFrequencyStatus === 'loading' ? (
                 <Loader />
               ) : (
                 <AreaChart
-                  data={errorsPerFunctionData?.errorCountPerTime ?? []}
-                  categories={['was_error']}
-                  dataKey="event_ts"
+                  data={errorFrequencyData ?? []}
+                  categories={['total']}
+                  dataKey="hour"
                   colors={['blue']}
                 />
               )}
@@ -83,25 +83,21 @@ export default function ErrorStats() {
             <div
               className={cx(
                 'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-                selectedTab1 !== 'errorCountPerFunctionAverage' && 'sm:hidden'
+                selectedTab !== 'FunctionErrors' && 'sm:hidden'
               )}
             >
               <Bold>Function Errors</Bold>
 
-              {errorsPerFunctionStatus === 'loading' ? (
+              {functionErrorsStatus === 'loading' ? (
                 <Loader />
               ) : (
-                <BarList
-                  data={
-                    errorsPerFunctionData?.errorCountPerFunctionAverage ?? []
-                  }
-                />
+                <BarList data={functionErrorsData ?? []} />
               )}
             </div>
           </div>
         </div>
 
-        <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
+        <div className="col-span-2 lg:col-span-1 flex flex-col gap-9">
           <div className="grid grid-cols-2 items-center">
             <Bold>Error per</Bold>
             <SelectBox defaultValue={errorBy} handleSelect={setErrorBy}>
@@ -114,7 +110,7 @@ export default function ErrorStats() {
           {errorsPerParamStatus === 'loading' ? (
             <Loader />
           ) : (
-            <BarList data={errorsPerParamData?.errorCountPerParam ?? []} />
+            <BarList data={errorsPerParamData ?? []} />
           )}
         </div>
       </div>
