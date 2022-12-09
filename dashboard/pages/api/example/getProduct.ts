@@ -1,6 +1,5 @@
 import { NextRequest } from 'next/server'
-
-import { track } from '../../../lib/tracker'
+import { logger } from '../../../lib/logger'
 
 /**
  * @swagger
@@ -25,11 +24,7 @@ const getProduct = (req: NextRequest) => {
   const product_id = searchParams.get('product_id')
 
   if (!product_id || product_id === null) {
-    track(req, 'getProduct', {
-      product_id,
-      was_error: 1,
-      error: 'No product_id param provided',
-    })
+    logger.error("No product_id param provided", req)
 
     return new Response(
       JSON.stringify({
@@ -43,10 +38,7 @@ const getProduct = (req: NextRequest) => {
       }
     )
   } else {
-    track(req, 'getProduct', {
-      product_id,
-      was_error: 0,
-    })
+    logger.info(`getProduct:${product_id}`, req)
 
     return new Response(
       JSON.stringify({

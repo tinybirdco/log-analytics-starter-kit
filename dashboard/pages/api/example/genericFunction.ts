@@ -1,6 +1,5 @@
 import { NextRequest } from 'next/server'
-
-import { track } from '../../../lib/tracker'
+import { logger } from '../../../lib/logger'
 
 /**
  * @swagger
@@ -12,7 +11,7 @@ import { track } from '../../../lib/tracker'
  *         description: Returns success message
  */
 export default function genericFunction(req: NextRequest) {
-  track(req, 'genericFunction', { some_custom_data: 1 })
+  logger.info('Loggeding something about genericFunction!', req)
 
   return new Response(
     JSON.stringify({
