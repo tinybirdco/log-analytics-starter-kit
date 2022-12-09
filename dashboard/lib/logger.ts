@@ -37,7 +37,9 @@ export class logger {
       origin: req.headers.get('origin'),
       xforwaredforip: req.headers.get('x-forwarded-for'),
       connection: req.headers.get('connection'),
-      cachecontrol: req.headers.get('cache-control'),
+      cachecontrol: req.headers.has('cache-control')
+        ? req.headers.get('cache-control')
+        : 'unknown',
       contenttype: req.headers.get('content-type'),
       from: req.headers.get('from'),
       via: req.headers.get('via'),
