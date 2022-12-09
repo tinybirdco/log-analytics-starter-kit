@@ -1,20 +1,24 @@
-import Meta from '../components/Meta'
+import { useState } from 'react'
 import { Datepicker, Tab, TabList } from '@tremor/react'
-import useAuth from '../lib/hooks/use-auth'
+
+import Meta from '../components/Meta'
 import ErrorModal from '../components/ErrorModal'
 import Credentials from '../components/Credentials'
 import APITester from '../components/APITester'
-import { useState } from 'react'
 import Dashboard from '../components/Dashboard'
+
+import useAuth from '../lib/hooks/use-auth'
 import useDateFilter from '../lib/hooks/use-date-filter'
+import useAPITester from '../lib/hooks/use-spec-file'
 import { DateFilter } from '../lib/types/date-filter'
 
 export default function Home() {
   const { isAuthenticated, isTokenValid } = useAuth()
   const { setDateFilter } = useDateFilter()
-  const [selectedTab, setSelectedTab] = useState<'api-tester' | 'dashboard'>(
-    'api-tester'
+  const [selectedTab, setSelectedTab] = useState<'APITester' | 'Dashboard'>(
+    'APITester'
   )
+  const { spec, onSpecFileUpload } = useAPITester()
 
   return (
     <>
@@ -27,7 +31,7 @@ export default function Home() {
             <h1 className="font-semibold text-lg leading-6">
               Vercel Edge Functions Analytics Starter Kit
             </h1>
-            {selectedTab === 'dashboard' && (
+            {selectedTab === 'Dashboard' && (
               <div className="justify-self-end">
                 <Datepicker
                   handleSelect={(
@@ -49,18 +53,22 @@ export default function Home() {
         <main>
           <div className="mb-6">
             <TabList
-              defaultValue="api-tester"
+              defaultValue="APITester"
               handleSelect={value => setSelectedTab(value)}
             >
-              <Tab value="api-tester" text="API Tester" />
-              <Tab value="dashboard" text="Dashboard" />
+              <Tab value="APITester" text="API Tester" />
+              <Tab value="Dashboard" text="Dashboard" />
             </TabList>
           </div>
 
           {isAuthenticated && !isTokenValid && <ErrorModal />}
           {isAuthenticated &&
             isTokenValid &&
-            (selectedTab === 'api-tester' ? <APITester /> : <Dashboard />)}
+            (selectedTab === 'APITester' ? (
+              <APITester spec={spec} onSpecFileUpload={onSpecFileUpload} />
+            ) : (
+              <Dashboard />
+            ))}
           {!isAuthenticated && <Credentials />}
         </main>
 

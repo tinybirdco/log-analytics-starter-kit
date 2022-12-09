@@ -3,14 +3,16 @@ import { useDropzone } from 'react-dropzone'
 
 import { Card } from '@tremor/react'
 
-import useAPITester from '../lib/hooks/use-spec-file'
-
 import 'swagger-ui-react/swagger-ui.css'
 
 const SwaggerUI = dynamic(import('swagger-ui-react'), { ssr: false })
 
-export default function APITester() {
-  const { spec, onSpecFileUpload } = useAPITester()
+type APITesterProps = {
+  spec: object | undefined
+  onSpecFileUpload: ([specFile]: File[]) => void
+}
+
+export default function APITester({ spec, onSpecFileUpload }: APITesterProps) {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop: onSpecFileUpload,
     accept: {

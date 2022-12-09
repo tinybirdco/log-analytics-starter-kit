@@ -12,6 +12,9 @@
     "servers": [
       {
         "url": "http://localhost:3000"
+      },
+      {
+        "url": "https://vercel-functions-starter-kit-eight.vercel.app/"
       }
     ]
   }
