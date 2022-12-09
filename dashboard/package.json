@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "exit 0",
     "generate-apidoc": "npx next-swagger-doc-cli next-swagger-doc.json  "
   },
   "dependencies": {
