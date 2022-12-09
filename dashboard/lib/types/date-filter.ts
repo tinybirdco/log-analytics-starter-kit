@@ -6,3 +6,7 @@ export enum DateFilter {
   Last12Months = '365',
   Custom = 'custom',
 }
+
+export const datetimeFormat = 'YYYY-MM-DD HH:mm:ss'
+
+export const dateFormat = 'YYYY-MM-DD'

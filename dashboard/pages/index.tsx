@@ -36,8 +36,8 @@ export default function Home() {
                   ) =>
                     setDateFilter(
                       DateFilter.Custom,
-                      selectedStartDay.toLocaleDateString('fr-CA'),
-                      selectedEndDay.toLocaleDateString('fr-CA')
+                      selectedStartDay,
+                      selectedEndDay
                     )
                   }
                 />

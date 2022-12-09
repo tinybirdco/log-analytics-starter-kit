@@ -1,19 +1,19 @@
 import moment from 'moment'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
-import { DateFilter } from '../types/date-filter'
+import { DateFilter, dateFormat } from '../types/date-filter'
 
 export default function useDateFilter() {
   const router = useRouter()
 
   const setDateFilter = useCallback(
-    (value: DateFilter, startDate?: string, endDate?: string) => {
+    (value: DateFilter, startDate?: Date, endDate?: Date) => {
       const searchParams = new URLSearchParams(window.location.search)
       searchParams.set('last_days', value)
 
       if (value === DateFilter.Custom && startDate && endDate) {
-        searchParams.set('start_date', startDate)
-        searchParams.set('end_date', endDate)
+        searchParams.set('start_date', moment(startDate).format(dateFormat))
+        searchParams.set('end_date', moment(endDate).format(dateFormat))
       } else {
         searchParams.delete('start_date')
         searchParams.delete('end_date')
@@ -45,23 +45,21 @@ export default function useDateFilter() {
 
       const startDate =
         startDateParam ||
-        moment(today)
-          .subtract(+DateFilter.Last7Days, 'days')
-          .format('YYYY-MM-DD')
-      const endDate = endDateParam || moment(today).format('YYYY-MM-DD')
+        moment(today).subtract(+DateFilter.Last7Days, 'days').format(dateFormat)
+      const endDate = endDateParam || moment(today).format(dateFormat)
 
       return { lastDays, setDateFilter, startDate, endDate }
     }
 
     const startDate = moment(today)
       .subtract(+lastDays, 'days')
-      .format('YYYY-MM-DD')
+      .format(dateFormat)
     const endDate =
       lastDaysParam === DateFilter.Yesterday
         ? moment(today)
             .subtract(+DateFilter.Yesterday, 'days')
-            .format('YYYY-MM-DD')
-        : moment(today).format('YYYY-MM-DD')
+            .format(dateFormat)
+        : moment(today).format(dateFormat)
 
     return { lastDays, setDateFilter, startDate, endDate }
   }, [
