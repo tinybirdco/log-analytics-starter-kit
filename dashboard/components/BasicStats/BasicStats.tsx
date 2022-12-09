@@ -1,13 +1,14 @@
 import { Card, AreaChart, BarList, Title, Bold } from '@tremor/react'
 import Loader from '../Loader'
 
-import useCallsPerFunction from '../../lib/hooks/api/use-calls-per-functions'
-import useTotalCalls from '../../lib/hooks/api/use-total-calls'
+import useFunctionCalls from '../../lib/hooks/api/use-function-calls'
+import useTopFunctions from '../../lib/hooks/api/use-top-functions'
 
 export default function BasicStatsContent() {
-  const { data: totalCallsData, status: totalCallsStatus } = useTotalCalls()
-  const { data: callsPerFunctionData, status: callsPerFunctionStatus } =
-    useCallsPerFunction()
+  const { data: functionCallsData, status: functionCallsStatus } =
+    useFunctionCalls()
+  const { data: topFunctionsData, status: topFunctionsStatus } =
+    useTopFunctions()
 
   return (
     <Card>
@@ -15,11 +16,11 @@ export default function BasicStatsContent() {
       <div className="grid grid-cols-2 mt-6 gap-10">
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
           <Bold>Function Calls</Bold>
-          {totalCallsStatus === 'loading' ? (
+          {functionCallsStatus === 'loading' ? (
             <Loader />
           ) : (
             <AreaChart
-              data={totalCallsData ?? []}
+              data={functionCallsData ?? []}
               categories={['total']}
               dataKey="hour"
               colors={['blue']}
@@ -28,10 +29,10 @@ export default function BasicStatsContent() {
         </div>
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
           <Bold>Top Functions</Bold>
-          {callsPerFunctionStatus === 'loading' ? (
+          {topFunctionsStatus === 'loading' ? (
             <Loader />
           ) : (
-            <BarList data={callsPerFunctionData ?? []} />
+            <BarList data={topFunctionsData ?? []} />
           )}
         </div>
       </div>
