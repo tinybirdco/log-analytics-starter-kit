@@ -100,6 +100,7 @@ export default function ErrorStats() {
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-9">
           <div className="grid grid-cols-2 items-center">
             <Bold>Error per</Bold>
+
             <SelectBox defaultValue={errorBy} handleSelect={setErrorBy}>
               {ERROR_PARAM_OPTIONS.map(({ text, value }) => (
                 <SelectBoxItem key={value} {...{ text, value }} />

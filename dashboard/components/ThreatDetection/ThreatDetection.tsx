@@ -1,26 +1,20 @@
-import { useState } from 'react'
-
-import {
-  AreaChart,
-  BarChart,
-  Bold,
-  Card,
-  Metric,
-  Tab,
-  TabList,
-  Title,
-} from '@tremor/react'
+import { BarChart, Bold, Card, Metric, Title } from '@tremor/react'
 import Loader from '../Loader'
 
-import useCallsPerIP from '../../lib/hooks/api/use-calls-per-ip'
-import { CallsPerIP } from '../../lib/types/calls-per-ip'
-import { cx, formatNumber } from '../../lib/utils'
+import { formatNumber } from '../../lib/utils'
+import useAverageCallsPerIP from '../../lib/hooks/api/use-average-calls-per-ip'
+import useIPsWithMostCalls from '../../lib/hooks/api/use-ips-with-most-calls'
+import useIPsExceedingAvgCallsPerMinute from '../../lib/hooks/api/use-ips-exceeding-avg-calls-per-minute'
 
 export default function ThreatDetection() {
-  const { data: callsPerIPData, status: callsPerIPStatus } = useCallsPerIP()
-  const [selectedTab, setSelectedTab] = useState<keyof CallsPerIP & string>(
-    'callCountPerTimeAverageVSTotal'
-  )
+  const { data: averageCallsPerIPData, status: averageCallsPerIPStatus } =
+    useAverageCallsPerIP()
+  const { data: ipsWithMostCallsData, status: ipsWithMostCallsStatus } =
+    useIPsWithMostCalls()
+  const {
+    data: ipsExceedingAvgCallsPerMinuteData,
+    status: ipsExceedingAvgCallsPerMinuteStatus,
+  } = useIPsExceedingAvgCallsPerMinute()
 
   return (
     <Card>
@@ -28,91 +22,37 @@ export default function ThreatDetection() {
 
       <div className="my-6">
         <Bold>Average Calls Per IP</Bold>
-        <Metric>{formatNumber(callsPerIPData?.callCountAverage, 0)}</Metric>
+        <Metric>{formatNumber(averageCallsPerIPData, 0)}</Metric>
       </div>
 
-      <div className="flex flex-col gap-9">
-        <div className="hidden sm:block">
-          <TabList
-            defaultValue="callCountPerTimeAverageVSTotal"
-            handleSelect={setSelectedTab}
-          >
-            <Tab
-              value="callCountPerTimeAverageVSTotal"
-              text="Average Total Function Call vs Current Total Function Calls"
+      <div className="grid grid-cols-2 mt-6 gap-10">
+        <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
+          <Bold>IPs With Most Calls</Bold>
+
+          {ipsWithMostCallsStatus === 'loading' ? (
+            <Loader />
+          ) : (
+            <BarChart
+              data={ipsWithMostCallsData ?? []}
+              categories={['total']}
+              dataKey="ip_address"
+              colors={['blue']}
             />
-            <Tab value="callCountPerIPTotal" text="IPs With Most Calls" />
-            <Tab
-              value="callCountPerIPOverAverage"
-              text="IPs with Calls that exceed the average rate of calls per IP"
-            />
-          </TabList>
+          )}
         </div>
+        <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
+          <Bold>IPs with Calls that exceed the average rate</Bold>
 
-        <div className="flex flex-col gap-10">
-          <div
-            className={cx(
-              'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-              selectedTab !== 'callCountPerTimeAverageVSTotal' && 'sm:hidden'
-            )}
-          >
-            <Bold>
-              Average Total Function Call vs Current Total Function Calls
-            </Bold>
-
-            {callsPerIPStatus === 'loading' ? (
-              <Loader />
-            ) : (
-              <AreaChart
-                data={callsPerIPData?.callCountPerTimeAverageVSTotal ?? []}
-                categories={['total', 'average']}
-                dataKey="minute"
-                colors={['blue', 'cyan']}
-              />
-            )}
-          </div>
-
-          <div
-            className={cx(
-              'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-              selectedTab !== 'callCountPerIPTotal' && 'sm:hidden'
-            )}
-          >
-            <Bold>IPs With Most Calls</Bold>
-
-            {callsPerIPStatus === 'loading' ? (
-              <Loader />
-            ) : (
-              <BarChart
-                data={callsPerIPData?.callCountPerIPTotal ?? []}
-                categories={['count']}
-                dataKey="ip"
-                colors={['blue']}
-              />
-            )}
-          </div>
-
-          <div
-            className={cx(
-              'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-              selectedTab !== 'callCountPerIPOverAverage' && 'sm:hidden'
-            )}
-          >
-            <Bold>
-              IPs with Calls that exceed the average rate of calls per IP
-            </Bold>
-
-            {callsPerIPStatus === 'loading' ? (
-              <Loader />
-            ) : (
-              <BarChart
-                data={callsPerIPData?.callCountPerIPOverAverage ?? []}
-                categories={['count']}
-                dataKey="ip"
-                colors={['blue']}
-              />
-            )}
-          </div>
+          {ipsExceedingAvgCallsPerMinuteStatus === 'loading' ? (
+            <Loader />
+          ) : (
+            <BarChart
+              data={ipsExceedingAvgCallsPerMinuteData ?? []}
+              categories={['total']}
+              dataKey="ip_address"
+              colors={['blue']}
+            />
+          )}
         </div>
       </div>
     </Card>
