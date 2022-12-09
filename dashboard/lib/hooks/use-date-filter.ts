@@ -12,9 +12,7 @@ export default function useDateFilter() {
       searchParams.set('last_days', value)
 
       if (value === DateFilter.Custom && startDate && endDate) {
-        if (!moment(startDate).diff(moment(endDate), 'day')) {
-          endDate?.setDate(endDate.getDate() + 1)
-        }
+        endDate.setDate(endDate.getDate() + 1)
 
         searchParams.set('start_date', moment(startDate).format(dateFormat))
         searchParams.set('end_date', moment(endDate).format(dateFormat))
