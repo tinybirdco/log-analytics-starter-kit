@@ -30,7 +30,12 @@ SCHEMA >
     `region` String `json:$.region`,
     `url` String `json:$.url`,
     `useragent` String `json:$.useragent`,
-    `xforwaredforip` String `json:$.xforwaredforip`
+    `xforwaredforip` String `json:$.xforwaredforip`,
+    `origin` String `json:$.origin`,
+    `referer` String `json:$.referer`,
+    `contenttype` String `json:$.contenttype`,
+    `from` String `json:$.from`,
+    `via` String `json:$.via`
 
 ENGINE "MergeTree"
 ENGINE_PARTITION_KEY "toYear(event_ts)"
