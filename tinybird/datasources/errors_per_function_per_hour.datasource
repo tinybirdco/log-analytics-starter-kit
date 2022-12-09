@@ -1,0 +1,10 @@
+# Data Source created from Pipe 'errors_per_function_per_hour_materialize'
+
+SCHEMA >
+    `function_name` String,
+    `hour` DateTime,
+    `total` AggregateFunction(count)
+
+ENGINE "AggregatingMergeTree"
+ENGINE_PARTITION_KEY "tuple()"
+ENGINE_SORTING_KEY "hour, function_name"

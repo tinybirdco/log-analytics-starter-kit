@@ -1,0 +1,19 @@
+NODE mv
+SQL >
+
+    SELECT
+        toStartOfMinute(event_ts) AS minute,
+        ip_address,
+        countState() AS total
+    FROM function_logs
+    GROUP BY
+        ip_address,
+        minute
+
+TYPE materialized
+DATASOURCE calls_by_ip_per_minute
+ENGINE "AggregatingMergeTree"
+ENGINE_PARTITION_KEY "tuple()"
+ENGINE_SORTING_KEY "minute, ip_address"
+ENGINE_TTL "minute + toIntervalDay(7)"
+

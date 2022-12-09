@@ -1,0 +1,11 @@
+# Data Source created from Pipe 'calls_by_ip_per_minute_materialize'
+
+SCHEMA >
+    `minute` DateTime,
+    `ip_address` String,
+    `total` AggregateFunction(count)
+
+ENGINE "AggregatingMergeTree"
+ENGINE_PARTITION_KEY "tuple()"
+ENGINE_SORTING_KEY "minute, ip_address"
+ENGINE_TTL "minute + toIntervalDay(7)"
