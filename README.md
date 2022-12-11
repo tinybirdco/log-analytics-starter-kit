@@ -6,6 +6,8 @@
 
 Data can help developers build better software, but it can be hard to find data tools that are easy to integrate, scale with you as you grow, and are flexible enough to meet different demands. This Stater Kit provides an example for you can build your own logging & telemetry solution powered by [Tinybird](https://www.tinybird.co/).
 
+![Tinybird Functions Analytics Dashboard](./assets/img/readme-intro-screenshot.png)
+
 ## What's in the box?
 
 This example includes a [Tinybird](https://www.tinybird.co/) data project, [Vercel](https://vercel.com/) Functions, and a [Next.js](https://nextjs.org/) + [Tremor](https://www.tremor.so/) app.
