@@ -47,3 +47,28 @@ The [Tinybird](https://www.tinybird.co/) data project is a complete example incl
 You can bootstrap your [Tinybird](https://www.tinybird.co/) project using this example, either by cloning this repo and pushing with the CLI, or by creating a new Workspace and selecting the Functions Analytics Starter Kit.
 
 ![Tinybird Functions Analytics DataFlow](./assets/img/readme-dataflow.png)
+
+
+## Deploy
+
+There are two components to this Starter Kit, the frontend application & the Tinybird backend.
+
+### Frontend application
+
+Use the button below to deploy this Starter Kit to Vercel.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Fvercel-functions-starter-kit&env=TINYBIRD_DATASOURCE_NAME,TINYBIRD_TOKEN&envDescription=These%20Env%20Vars%20link%20your%20frontend%20to%20the%20Tinybird%20backend.%20See%20the%20Starter%20Kit%20readme%20for%20more%20info.&envLink=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Fvercel-functions-starter-kit%23environment-variables&project-name=tinybird-vercel-functions-starter-kit&repository-name=tinybird-vercel-functions-starter-kit)
+
+#### Environment Variables
+
+The reference `logger.ts` implementation requires two environment variables be defined:
+
+- `TINYBIRD_DATASOURCE_NAME` is the name of the Tinybird Data Source to send logs to. Default: `function_logs`.
+- `TINYBIRD_TOKEN` is the append Auth Token that gives permission to send logs to the Data Source in Tinybird. You will need to copy this out of your Tinybird account by logging into the Tinybird UI.
+
+### Tinybird backend
+
+Use the button below to deploy this Starter Kit to Tinybird.
+
+[![Deploy to Tinybird](https://cdn.tinybird.co/button)](https://ui.tinybird.co/workspaces/new?name=vercel-functions-starter-kit&starter_kit=vercel-functions-starter-kit)
+
