@@ -16,6 +16,10 @@ export default function useSpecFile() {
     reader.addEventListener('load', event => {
       const result = String(event.target?.result)
       const parsed = format === 'json' ? JSON.parse(result) : yaml.load(result)
+      parsed.servers = [
+        ...(parsed.servers ?? []),
+        { url: window.location.origin },
+      ]
       SwaggerParser.validate(parsed).then(setSpec)
     })
 
