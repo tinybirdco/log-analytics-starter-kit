@@ -1,0 +1,42 @@
+
+SCHEMA >
+    `acceptencoding` String `json:$.acceptencoding`,
+    `acceptlanguage` String `json:$.acceptlanguage`,
+    `browsername` String `json:$.browsername`,
+    `browserversion` String `json:$.browserversion`,
+    `cachecontrol` String `json:$.cachecontrol`,
+    `city` String `json:$.city`,
+    `connection` String `json:$.connection`,
+    `country` String `json:$.country`,
+    `cpuarchitecture` String `json:$.cpuarchitecture`,
+    `devicemodel` String `json:$.devicemodel`,
+    `devicetype` String `json:$.devicetype`,
+    `devicevendor` String `json:$.devicevendor`,
+    `enginename` String `json:$.enginename`,
+    `engineversion` String `json:$.engineversion`,
+    `event_ts` DateTime64(3) `json:$.event_ts`,
+    `headers` String `json:$.headers`,
+    `host` String `json:$.host`,
+    `ip_address` String `json:$.ip_address`,
+    `isbot` UInt8 `json:$.isbot`,
+    `latitude` String `json:$.latitude`,
+    `log_level` String `json:$.log_level`,
+    `log_message` String `json:$.log_message`,
+    `longitude` String `json:$.longitude`,
+    `method` String `json:$.method`,
+    `osname` String `json:$.osname`,
+    `osverison` String `json:$.osverison`,
+    `protocol` String `json:$.protocol`,
+    `region` String `json:$.region`,
+    `url` String `json:$.url`,
+    `useragent` String `json:$.useragent`,
+    `xforwaredforip` String `json:$.xforwaredforip`,
+    `origin` String `json:$.origin`,
+    `referer` String `json:$.referer`,
+    `contenttype` String `json:$.contenttype`,
+    `from` String `json:$.from`,
+    `via` String `json:$.via`
+
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYear(event_ts)"
+ENGINE_SORTING_KEY "log_level, event_ts"

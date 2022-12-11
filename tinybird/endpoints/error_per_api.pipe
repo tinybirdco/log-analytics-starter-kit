@@ -1,0 +1,36 @@
+NODE endpoint
+SQL >
+
+    %
+    SELECT
+        toStartOfHour(event_ts) as hour,
+        {{ column(per_filter, "osname") }},
+        count() as total,
+        {{ String(per_filter, "osname") }} as per_filter
+    FROM function_logs
+    WHERE
+        log_level == 'ERROR'
+        {% if defined(date_from) and defined(date_to) %}
+            AND hour
+            BETWEEN {{
+                Date(
+                    date_from,
+                    "2020-09-09",
+                    description="Starting date range",
+                    required=True,
+                )
+            }}
+            and {{
+                Date(
+                    date_to,
+                    "2020-09-10",
+                    description="Starting date range",
+                    required=True,
+                )
+            }}
+        {% else %} {{ error("Must supply date_from & date_to params") }}
+        {% end %}
+    GROUP BY hour, {{ column(per_filter, "osname") }}
+    ORDER BY hour ASC
+
+

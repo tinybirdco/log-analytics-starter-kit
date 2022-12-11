@@ -1,0 +1,20 @@
+NODE mv
+SQL >
+
+    SELECT
+        path(url) AS function_name,
+        toStartOfHour(event_ts) AS hour,
+        countState() AS total
+    FROM function_logs
+    WHERE log_level = 'ERROR'
+    GROUP BY
+        hour,
+        function_name
+    ORDER BY hour ASC
+
+TYPE materialized
+DATASOURCE errors_per_function_per_hour
+ENGINE "AggregatingMergeTree"
+ENGINE_PARTITION_KEY "tuple()"
+ENGINE_SORTING_KEY "hour, function_name"
+

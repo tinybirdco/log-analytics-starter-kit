@@ -1,0 +1,38 @@
+NODE merge
+SQL >
+
+    %
+    SELECT minute, ip_address, countMerge(total) AS total
+    FROM calls_by_ip_per_minute
+    WHERE
+        1
+        {% if defined(date_from) and defined(date_to) %}
+            AND minute
+            BETWEEN {{
+                Date(
+                    date_from,
+                    "2020-09-09",
+                    description="Starting date range",
+                    required=True,
+                )
+            }}
+            and {{
+                Date(
+                    date_to,
+                    "2020-09-10",
+                    description="Starting date range",
+                    required=True,
+                )
+            }}
+        {% else %} {{ error("Must supply date_from & date_to params") }}
+        {% end %}
+    GROUP BY minute, ip_address
+
+
+
+NODE endpoint
+SQL >
+
+    SELECT avg(total) as average FROM merge
+
+

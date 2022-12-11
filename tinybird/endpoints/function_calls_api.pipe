@@ -1,0 +1,32 @@
+NODE endpoint
+SQL >
+
+    %
+    SELECT hour, countMerge(total) as total
+    FROM function_calls_per_hour
+    WHERE
+        1
+        {% if defined(date_from) and defined(date_to) %}
+            AND hour
+            BETWEEN {{
+                Date(
+                    date_from,
+                    "2020-09-09",
+                    description="Starting date range",
+                    required=True,
+                )
+            }}
+            and {{
+                Date(
+                    date_to,
+                    "2020-09-10",
+                    description="Starting date range",
+                    required=True,
+                )
+            }}
+        {% else %} {{ error("Must supply date_from & date_to params") }}
+        {% end %}
+    GROUP BY hour
+    ORDER BY hour ASC
+
+
