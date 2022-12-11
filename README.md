@@ -6,7 +6,7 @@
 
 Data can help developers build better software, but it can be hard to find data tools that are easy to integrate, scale with you as you grow, and are flexible enough to meet different demands. This Stater Kit provides an example for you can build your own logging & telemetry solution powered by [Tinybird](https://www.tinybird.co/).
 
-![Tinybird Functions Analytics Dashboard](./assets/img/readme-intro-screenshot.png)
+![Tinybird Functions Analytics Dashboard](./assets/img/readme-dashboard.png)
 
 ## What's in the box?
 
@@ -30,14 +30,20 @@ Two examples of Vercel Functions are included, [genericFunction.ts](./dashboard/
 
 The first page of the demo app is the API Tester. This page provides a Swagger interface to execute the example Vercel Function endpoints. You can also upload a custom OpenAPI 3.0 spec file to generate a Swagger interface for any other API, so you can implement logging into your own APIs and use the app to test it.
 
+![Tinybird Functions Analytics Dashboard](./assets/img/readme-api-tester.png)
+
 #### Dashboard
 
 The second page of the demo app is the Dashboard. This page provides a set of example charts that combine the logging information with the request information, giving you deeper insight into the context around how your functions are used.
 
 The dashboard is implemented using [Tremor](https://www.tremor.so/) as the visualisation library and [Tinybird](https://www.tinybird.co/) as the data layer. The logs are ingested into [Tinybird](https://www.tinybird.co/), queried with SQL and the results are published as HTTP APIs that are embedded directly into the application.
 
+![Tinybird Functions Analytics Dashboard](./assets/img/readme-dashboard.png)
+
 ### Tinybird Data Project
 
 The [Tinybird](https://www.tinybird.co/) data project is a complete example including Data Sources, Pipes, Materialized Views, and APIs.
 
 You can bootstrap your [Tinybird](https://www.tinybird.co/) project using this example, either by cloning this repo and pushing with the CLI, or by creating a new Workspace and selecting the Functions Analytics Starter Kit.
+
+![Tinybird Functions Analytics DataFlow](./assets/img/readme-dataflow.png)
