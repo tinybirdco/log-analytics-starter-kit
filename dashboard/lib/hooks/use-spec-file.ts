@@ -1,20 +1,30 @@
+import { useState } from 'react'
+
 import SwaggerParser from '@apidevtools/swagger-parser'
 import yaml from 'js-yaml'
-import { useState } from 'react'
+import useSWR from 'swr'
 
 export default function useSpecFile() {
   const [spec, setSpec] = useState<object>()
+  useSWR('swagger-file', () => fetch('/swagger.json'), {
+    onSuccess: res => res.blob().then(res => readSpecFile(res, 'json')),
+  })
 
-  const onSpecFileUpload = ([specFile]: File[]) => {
+  const readSpecFile = (file: Blob, format: 'json' | 'yaml') => {
     const reader = new FileReader()
+
     reader.addEventListener('load', event => {
       const result = String(event.target?.result)
-      const parsed = specFile.name.endsWith('.json')
-        ? JSON.parse(String(result))
-        : yaml.load(result)
+      const parsed = format === 'json' ? JSON.parse(result) : yaml.load(result)
       SwaggerParser.validate(parsed).then(setSpec)
     })
-    reader.readAsText(specFile)
+
+    reader.readAsText(file)
+  }
+
+  const onSpecFileUpload = (specFile?: File) => {
+    if (specFile)
+      readSpecFile(specFile, specFile.name.endsWith('.json') ? 'json' : 'yaml')
   }
 
   return {
