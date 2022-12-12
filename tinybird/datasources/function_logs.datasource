@@ -1,4 +1,4 @@
-TOKEN tracker APPEND
+TOKEN logger APPEND
 
 SCHEMA >
     `acceptencoding` String `json:$.acceptencoding`,
