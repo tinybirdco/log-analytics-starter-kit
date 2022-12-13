@@ -86,7 +86,7 @@ export default function Home() {
               </a>
             </p>
             <a
-              href="#"
+              href="https://github.com/tinybirdco/vercel-functions-starter-kit"
               target="blank"
               rel="noreferrer"
               className="text-primary underline"
