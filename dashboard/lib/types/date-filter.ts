@@ -7,6 +7,4 @@ export enum DateFilter {
   Custom = 'custom',
 }
 
-export const datetimeFormat = 'YYYY-MM-DD HH:mm:ss'
-
 export const dateFormat = 'YYYY-MM-DD'

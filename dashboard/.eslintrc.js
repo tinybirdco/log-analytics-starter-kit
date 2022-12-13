@@ -3,6 +3,7 @@
  */
 module.exports = {
   extends: ['next/core-web-vitals', 'prettier'],
+  plugins: ['prettier'],
   ignorePatterns: ['node_modules', 'dist'],
   parserOptions: {
     babelOptions: {

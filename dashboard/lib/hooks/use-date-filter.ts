@@ -7,15 +7,13 @@ export default function useDateFilter() {
   const router = useRouter()
 
   const setDateFilter = useCallback(
-    (value: DateFilter, startDate?: Date, endDate?: Date) => {
+    (value: DateFilter, startDate?: string, endDate?: string) => {
       const searchParams = new URLSearchParams(window.location.search)
       searchParams.set('last_days', value)
 
       if (value === DateFilter.Custom && startDate && endDate) {
-        endDate.setDate(endDate.getDate() + 1)
-
-        searchParams.set('start_date', moment(startDate).format(dateFormat))
-        searchParams.set('end_date', moment(endDate).format(dateFormat))
+        searchParams.set('start_date', startDate)
+        searchParams.set('end_date', endDate)
       } else {
         searchParams.delete('start_date')
         searchParams.delete('end_date')
