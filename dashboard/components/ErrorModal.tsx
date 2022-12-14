@@ -20,7 +20,7 @@ export default function ErrorModal() {
   }
 
   return (
-    <Modal isOpen={!!error}>
+    <Modal isOpen={!!error} onClose={handleClose}>
       <Modal.Content>
         <span className="text-sm text-error font-semibold flex items-center gap-2 mb-4">
           <svg

@@ -1,4 +1,4 @@
-import * as Tooltip from '@radix-ui/react-tooltip'
+import { Popover } from '@headlessui/react'
 
 import { CalendarIcon, QuestionIcon } from '../Icons'
 import Select from '../Select'
@@ -27,17 +27,17 @@ export default function DateFilter() {
 
   return (
     <div className="flex items-center gap-4">
-      <Tooltip.Provider delayDuration={0}>
-        <Tooltip.Root>
-          <Tooltip.Trigger>
-            <QuestionIcon className="text-secondaryLight" />
-            <div className="sr-only">What is the time zone used?</div>
-          </Tooltip.Trigger>
-          <Tooltip.Content className="bg-secondary text-white text-xs font-light rounded py-1 px-2 z-[2]">
-            UTC timezone
-          </Tooltip.Content>
-        </Tooltip.Root>
-      </Tooltip.Provider>
+      <Popover className="relative">
+        <Popover.Button>
+          <QuestionIcon className="text-secondaryLight" />
+          <div className="sr-only">What is the time zone used?</div>
+        </Popover.Button>
+
+        <Popover.Panel className="absolute bg-secondary text-white text-xs font-light rounded py-1 px-2 z-[2]">
+          UTC timezone
+        </Popover.Panel>
+      </Popover>
+
       <div className="min-w-[165px]">
         <Select
           id="lastDays"
