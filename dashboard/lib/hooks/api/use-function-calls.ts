@@ -6,7 +6,7 @@ import {
 import useDateFilter from '../use-date-filter'
 import useQuery from '../use-query'
 
-const PIPE_NAME = 'function_calls_api'
+const PIPE_NAME = 'log_level_frequency_api'
 
 async function getFunctionCalls(
   date_from?: string,
@@ -17,7 +17,15 @@ async function getFunctionCalls(
     date_to,
   })
 
-  return data
+  const logLevelFrequency = data.map(({ hour, log_level, total }) => ({
+    hour,
+    info: 0,
+    warn: 0,
+    error: 0,
+    [log_level.toLowerCase()]: total,
+  }))
+
+  return logLevelFrequency
 }
 
 export default function useFunctionCalls() {
