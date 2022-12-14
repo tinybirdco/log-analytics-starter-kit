@@ -26,7 +26,7 @@ SCHEMA >
     `longitude` String `json:$.longitude`,
     `method` String `json:$.method`,
     `osname` String `json:$.osname`,
-    `osverison` String `json:$.osverison`,
+    `osversion` String `json:$.osversion`,
     `protocol` String `json:$.protocol`,
     `region` String `json:$.region`,
     `url` String `json:$.url`,
