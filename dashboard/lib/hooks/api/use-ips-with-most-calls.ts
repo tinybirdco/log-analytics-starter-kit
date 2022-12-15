@@ -17,7 +17,7 @@ async function getIPsWithMostCalls(
     date_to,
   })
 
-  return data
+  return data.sort((a, b) => a.total - b.total)
 }
 
 export default function useIPsWithMostCalls() {

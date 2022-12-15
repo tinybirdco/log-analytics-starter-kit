@@ -88,11 +88,13 @@ export default function ErrorStats() {
             >
               <Bold>Function Errors</Bold>
 
-              {functionErrorsStatus === 'loading' ? (
-                <Loader />
-              ) : (
-                <BarList data={functionErrorsData ?? []} />
-              )}
+              <div className="max-h-96 overflow-y-auto">
+                {functionErrorsStatus === 'loading' ? (
+                  <Loader />
+                ) : (
+                  <BarList data={functionErrorsData ?? []} />
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -108,11 +110,13 @@ export default function ErrorStats() {
             </SelectBox>
           </div>
 
-          {errorsPerParamStatus === 'loading' ? (
-            <Loader />
-          ) : (
-            <BarList data={errorsPerParamData ?? []} />
-          )}
+          <div className="max-h-96 overflow-y-auto">
+            {errorsPerParamStatus === 'loading' ? (
+              <Loader />
+            ) : (
+              <BarList data={errorsPerParamData ?? []} />
+            )}
+          </div>
         </div>
       </div>
     </Card>

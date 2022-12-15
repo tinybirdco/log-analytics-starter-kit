@@ -31,11 +31,13 @@ export default function BasicStatsContent() {
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
           <Bold>Top Functions</Bold>
 
-          {topFunctionsStatus === 'loading' ? (
-            <Loader />
-          ) : (
-            <BarList data={topFunctionsData ?? []} />
-          )}
+          <div className="max-h-96 overflow-y-auto">
+            {topFunctionsStatus === 'loading' ? (
+              <Loader />
+            ) : (
+              <BarList data={topFunctionsData ?? []} />
+            )}
+          </div>
         </div>
       </div>
     </Card>
