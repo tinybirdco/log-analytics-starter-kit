@@ -1,12 +1,13 @@
+import { LogLevelType } from './log-level'
+
 export type FunctionCallsQueryData = {
   hour: string
-  log_level: 'INFO' | 'WARN' | 'ERROR'
+  log_level: LogLevelType
   total: number
 }
 
-export type FunctionCalls = {
+export type FunctionCall = {
   hour: string
-  info: number
-  warn: number
-  error: number
-}[]
+} & Record<Lowercase<LogLevelType>, number>
+
+export type FunctionCalls = FunctionCall[]

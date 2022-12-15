@@ -3,6 +3,7 @@ import {
   FunctionCalls,
   FunctionCallsQueryData,
 } from '../../types/function-calls'
+import { LogLevelType } from '../../types/log-level'
 import useDateFilter from '../use-date-filter'
 import useQuery from '../use-query'
 
@@ -17,13 +18,22 @@ async function getFunctionCalls(
     date_to,
   })
 
-  const logLevelFrequency = data.map(({ hour, log_level, total }) => ({
-    hour,
-    info: 0,
-    warn: 0,
-    error: 0,
-    [log_level.toLowerCase()]: total,
-  }))
+  const logLevelGrouped = data.reduce<
+    Record<string, Record<Lowercase<LogLevelType>, number>>
+  >((acc, { hour, log_level, total }) => {
+    const curValue = acc[hour] ?? {}
+    const curLogLevel = log_level.toLowerCase() as Lowercase<LogLevelType>
+    curValue[curLogLevel] = curValue[curLogLevel] ?? 0 + total
+
+    return {
+      ...acc,
+      [hour]: curValue,
+    }
+  }, {})
+
+  const logLevelFrequency = Object.entries(logLevelGrouped).map(
+    ([hour, frequencies]) => ({ hour, ...frequencies })
+  )
 
   return logLevelFrequency
 }
