@@ -24,5 +24,5 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes to the documentation
 - [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] I have update the [CHANGELOG](https://github.com/tinybirdco/vercel-functions-starter-kit/blob/main/CHANGELOG.md)
+- [ ] I have update the [CHANGELOG](https://github.com/tinybirdco/log-analytics-starter-kit/blob/main/CHANGELOG.md)
 - [ ] New and existing unit tests pass locally with my changes
