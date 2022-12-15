@@ -1,10 +1,10 @@
 import Head from 'next/head'
 
 const { description, imagePath, title, url } = {
-  title: 'Vercel Edge Function Analytics Dashboard  · Tinybird',
+  title: 'Log Analytics Dashboard · Tinybird',
   description:
-    'Vercel Edge Function Analytics Starter Kit built with Tinybird and Next.js',
-  url: 'https://vefa.tinybird.co',
+    'Log Analytics Starter Kit built with Tinybird and Next.js',
+  url: 'https://log-analytics.tinybird.co',
   imagePath: `/banner.png`,
 }
 
