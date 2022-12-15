@@ -1,7 +1,7 @@
 {
-  "name": "@tinybirdco/function-analytics-dashboard",
+  "name": "@tinybirdco/log-analytics-starter-kit",
   "version": "0.1.0",
-  "description": " Vercel edge functions analytics dashboard",
+  "description": " Log Analytics Starter Kit",
   "license": "MIT",
   "author": "Tinybird team",
   "scripts": {

@@ -27,7 +27,7 @@ export default function Home() {
           <img src="/icon.png" alt="" width={24} height={24} />
           <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 mt-7 mb-10 w-f">
             <h1 className="font-semibold text-lg leading-6">
-              Vercel Edge Functions Analytics Starter Kit
+              Log Analytics Starter Kit
             </h1>
             {selectedTab === 'Dashboard' && (
               <div className="justify-self-end">
