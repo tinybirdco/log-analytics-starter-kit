@@ -1,11 +1,14 @@
 import { RangeValue } from 'rc-picker/lib/interface'
-import { DatePicker as BaseDatePicker } from 'antd'
+import momentGenerateConfig from 'rc-picker/lib/generate/moment'
 import moment, { Moment } from 'moment'
-import { DateFilter } from '../../lib/types/date-filter'
+import { DateFilter, dateFormat } from '../../lib/types/date-filter'
 import { RightArrowIcon } from '../Icons'
+import generatePicker from 'antd/es/date-picker/generatePicker'
+
+const BaseDatePicker = generatePicker<Moment>(momentGenerateConfig)
 
 type DatePickerProps = {
-  onChange: (value: DateFilter, startDate?: string, endDate?: string) => void
+  onChange: (value: DateFilter, startDate?: Moment, endDate?: Moment) => void
   startDate?: string
   endDate?: string
 }
@@ -19,11 +22,7 @@ export default function DatePicker({
     if (!range) return
     const [startDate, endDate] = range
     if (!startDate || !endDate) return
-    onChange(
-      DateFilter.Custom,
-      startDate.format('YYYY-MM-DD'),
-      endDate.format('YYYY-MM-DD')
-    )
+    onChange(DateFilter.Custom, startDate, endDate)
   }
 
   return (
@@ -33,17 +32,18 @@ export default function DatePicker({
         ev.stopPropagation()
       }}
       separator={<RightArrowIcon />}
-      format="YYYY-MM-DD"
+      format={dateFormat}
       suffixIcon={null}
       allowClear={false}
       bordered={false}
+      open
       defaultValue={[
-        moment(startDate, 'YYYY-MM-DD'),
-        moment(endDate, 'YYYY-MM-DD'),
+        moment(startDate, dateFormat),
+        moment(endDate, dateFormat).subtract(1, 'days'),
       ]}
       onChange={handleChange}
       className="flex gap-2 mr-2"
-      dropdownClassName="hidden"
+      popupClassName="hidden"
     />
   )
 }
