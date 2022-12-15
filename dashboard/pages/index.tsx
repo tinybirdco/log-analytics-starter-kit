@@ -73,7 +73,7 @@ export default function Home() {
               </a>
             </p>
             <a
-              href="https://github.com/tinybirdco/vercel-functions-starter-kit"
+              href="https://github.com/tinybirdco/log-analytics-starter-kit"
               target="blank"
               rel="noreferrer"
               className="text-primary underline"
