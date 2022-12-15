@@ -4,8 +4,6 @@ NODE endpoint
 SQL >
 
     %
-    {% set date_from = '2022-12-09' %}
-    {% set date_to = '2022-12-10' %}
     SELECT function_name, countMerge(total) AS total
     FROM errors_per_function_per_hour
     WHERE
