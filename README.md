@@ -2,7 +2,7 @@
   <a href="https://www.tinybird.co/join-our-slack-community"><img alt="Slack Status" src="https://img.shields.io/badge/slack-chat-1FCC83?style=flat&logo=slack"></a>
 </p>
 
-# Tinybird Vercel Edge Functions Analytics Starter Kit
+# Tinybird Log Analytics Starter Kit
 
 Data can help developers build better software, but it can be hard to find data tools that are easy to integrate, scale with you as you grow, and are flexible enough to meet different demands. This Stater Kit provides an example for you can build your own logging & telemetry solution powered by [Tinybird](https://www.tinybird.co/).
 
