@@ -1,9 +1,0 @@
-# Data Source created from Pipe 'function_calls_per_hour_materialize'
-
-SCHEMA >
-    `hour` DateTime,
-    `total` AggregateFunction(count)
-
-ENGINE "AggregatingMergeTree"
-ENGINE_PARTITION_KEY "tuple()"
-ENGINE_SORTING_KEY "hour"
