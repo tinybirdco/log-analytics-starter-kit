@@ -5,7 +5,7 @@ SQL >
         toStartOfHour(event_ts) AS hour,
         log_level,
         countState() AS total
-    FROM functions_logs
+    FROM function_logs
     GROUP BY
         hour,
         log_level
