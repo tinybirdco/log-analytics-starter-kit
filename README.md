@@ -70,5 +70,5 @@ The reference `logger.ts` implementation requires two environment variables be d
 
 Use the button below to deploy this Starter Kit to Tinybird.
 
-[![Deploy to Tinybird](https://cdn.tinybird.co/button)](https://ui.tinybird.co/workspaces/new?name=log-analytics-starter-kit&starter_kit=log-analytics-starter-kit)
+[![Deploy to Tinybird](https://cdn.tinybird.co/button)](https://ui.tinybird.co/workspaces/new?name=log_analytics_starter_kit&starter_kit=log-analytics-starter-kit)
 
