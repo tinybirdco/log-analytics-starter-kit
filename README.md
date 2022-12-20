@@ -24,17 +24,9 @@ Finally, the log message, level and request info is sent to [Tinybird's Events A
 
 Two examples of Vercel Functions are included, [genericFunction.ts](./dashboard/pages/api/example/genericFunction.ts) and [getProduct.ts](./dashboard/pages/api/example/getProduct.ts). These functions simply demonstrate how to use the logger in a function, and provide endpoints to hit that generate logs on demand.
 
-### Application
+### Web Dashboard
 
-#### API Tester
-
-The first page of the demo app is the API Tester. This page provides a Swagger interface to execute the example Vercel Function endpoints. You can also upload a custom OpenAPI 3.0 spec file to generate a Swagger interface for any other API, so you can implement logging into your own APIs and use the app to test it.
-
-![Tinybird Functions Analytics Dashboard](./assets/img/readme-api-tester.png)
-
-#### Dashboard
-
-The second page of the demo app is the Dashboard. This page provides a set of example charts that combine the logging information with the request information, giving you deeper insight into the context around how your functions are used.
+The Web Dashboard provides a set of example charts that combine the logging information with the request information, giving you deeper insight into the context around how your functions are used.
 
 The dashboard is implemented using [Tremor](https://www.tremor.so/) as the visualisation library and [Tinybird](https://www.tinybird.co/) as the data layer. The logs are ingested into [Tinybird](https://www.tinybird.co/), queried with SQL and the results are published as HTTP APIs that are embedded directly into the application.
 
