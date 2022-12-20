@@ -41,7 +41,7 @@ export default function AnomalyDetection() {
           )}
         </div>
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
-          <Bold>IPs with Calls that exceed the average rate</Bold>
+          <Bold>IPs Exceeding The Average Rate</Bold>
 
           {ipsExceedingAvgCallsPerMinuteStatus === 'loading' ? (
             <Loader />
