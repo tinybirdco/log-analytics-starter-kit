@@ -1,13 +1,13 @@
 import BasicStats from './BasicStats'
 import ErrorStats from './ErrorStats'
-import ThreatDetection from './ThreatDetection'
+import AnomalyDetection from './AnomalyDetection'
 
 export default function Dashboard() {
   return (
     <div className="flex flex-col gap-6 [&>*]:min-h-[450px]">
       <BasicStats />
       <ErrorStats />
-      <ThreatDetection />
+      <AnomalyDetection />
     </div>
   )
 }
