@@ -6,7 +6,7 @@ import useAverageCallsPerIP from '../../lib/hooks/api/use-average-calls-per-ip'
 import useIPsWithMostCalls from '../../lib/hooks/api/use-ips-with-most-calls'
 import useIPsExceedingAvgCallsPerMinute from '../../lib/hooks/api/use-ips-exceeding-avg-calls-per-minute'
 
-export default function ThreatDetection() {
+export default function AnomalyDetection() {
   const { data: averageCallsPerIPData, status: averageCallsPerIPStatus } =
     useAverageCallsPerIP()
   const { data: ipsWithMostCallsData, status: ipsWithMostCallsStatus } =
@@ -18,7 +18,7 @@ export default function ThreatDetection() {
 
   return (
     <Card>
-      <Title>Threat Detection</Title>
+      <Title>Anomaly Detection</Title>
 
       <div className="my-6">
         <Bold>Average Calls Per IP</Bold>
@@ -41,7 +41,7 @@ export default function ThreatDetection() {
           )}
         </div>
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-6">
-          <Bold>IPs with Calls that exceed the average rate</Bold>
+          <Bold>IPs Exceeding The Average Rate</Bold>
 
           {ipsExceedingAvgCallsPerMinuteStatus === 'loading' ? (
             <Loader />
