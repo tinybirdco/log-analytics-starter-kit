@@ -1,34 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  Log Analytics Starter Kit Dashboard
 
-## Getting Started
+The dashboard is a tool to consume the Tinybird pipes & visualize your log data.
 
-First, run the development server:
+## Tech stack
+
+To build this Starter Kit template we have used:
+
+- [Next.js](https://nextjs.org/) with [React](https://reactjs.org/) v18 as a framework
+- [Vercel](https://vercel.com/) as deployment system
+- [Tailwind](https://tailwindcss.com/) with theme configuration for CSS styling
+- [SWR](https://swr.vercel.app/es-ES) for data fetching
+- [Tremor](https://tremor.so/) for graph plotting
+- [Vitest](https://vitest.dev/) for unit testing
+- [Cypress](https://www.cypress.io/) for e2e testing
+
+## How to use it?
+
+### Install
+
+First of all, you have to clone the repo if you haven't already
+
+```bash
+$ git clone git@github.com:tinybirdco/log-analytics-starter-kit.git
+```
+
+Then navigate into the `/dashboard` folder and install the dependencies
+
+```bash
+$ cd log-analytics-starter-kit/dashboard
+$ npm install
+```
+
+### Build for Development
+
+Once you have installed the dependencies, run:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You will find the app running at http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+npm run build
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+npm run start
+```
 
-## Learn More
+ And you will find the app running at but with the production bundle http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+### Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are always welcome. To contribute, commit your changes into a new branch, and open a pull request against the main branch.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Please be careful in describing the problem and the implemented solution so that we can make the best review possible.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Issues
+
+Also, you can [open an issue](https://github.com/tinybirdco/log-analytics-starter-kit/issues) if you've encountered a bug or an enhancement on the Dashboard.
+
+## Customization
+
+We encourage you to [fork](https://docs.github.com/es/get-started/quickstart/fork-a-repo) the repo and customize the dashboard adapting it to your needs and to your branding image.
+
+You will be able to change the main colors, the font and other theme configration modifying the [tailwind.config.js](./tailwind.config.js) file. However, colors defined in [styles/theme/tremor-colors.ts](styles/theme/tremor-colors.ts) are predefined and cannot be changed
+
+## Authors
+
+[Dmytro Radchuk](https://github.com/dmytro-tinybird)
+
+[Rafa Moreno](https://github.com/rmorehig)
+
+[Raquel Yuste](https://github.com/raqyuste)
+
+## Licence
+
+MIT License
+
+Copyright (c) 2022 Tinybird.co
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
