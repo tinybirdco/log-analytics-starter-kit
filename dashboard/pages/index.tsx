@@ -1,22 +1,13 @@
-import { useState } from 'react'
-import { Tab, TabList } from '@tremor/react'
-
 import Meta from '../components/Meta'
 import ErrorModal from '../components/ErrorModal'
 import Credentials from '../components/Credentials'
 import DateFilter from '../components/DateFilter'
-import APITester from '../components/APITester'
 import Dashboard from '../components/Dashboard'
 
 import useAuth from '../lib/hooks/use-auth'
-import useAPITester from '../lib/hooks/use-spec-file'
 
 export default function Home() {
   const { isAuthenticated, isTokenValid } = useAuth()
-  const [selectedTab, setSelectedTab] = useState<'APITester' | 'Dashboard'>(
-    'APITester'
-  )
-  const { spec, onSpecFileUpload } = useAPITester()
 
   return (
     <>
@@ -29,33 +20,15 @@ export default function Home() {
             <h1 className="font-semibold text-lg leading-6">
               Log Analytics Starter Kit
             </h1>
-            {selectedTab === 'Dashboard' && (
-              <div className="justify-self-end">
-                <DateFilter />
-              </div>
-            )}
+            <div className="justify-self-end">
+              <DateFilter />
+            </div>
           </div>
         </header>
 
         <main>
-          <div className="mb-6">
-            <TabList
-              defaultValue="APITester"
-              handleSelect={value => setSelectedTab(value)}
-            >
-              <Tab value="APITester" text="API Tester" />
-              <Tab value="Dashboard" text="Dashboard" />
-            </TabList>
-          </div>
-
           {isAuthenticated && !isTokenValid && <ErrorModal />}
-          {isAuthenticated &&
-            isTokenValid &&
-            (selectedTab === 'APITester' ? (
-              <APITester spec={spec} onSpecFileUpload={onSpecFileUpload} />
-            ) : (
-              <Dashboard />
-            ))}
+          {isAuthenticated && isTokenValid && <Dashboard />}
           {!isAuthenticated && <Credentials />}
         </main>
 
