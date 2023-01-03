@@ -1,6 +1,6 @@
 import { Popover } from '@headlessui/react'
-
-import { CalendarIcon, QuestionIcon } from '../Icons'
+import { Button } from '@tremor/react'
+import { CalendarIcon, GithubIcon, QuestionIcon } from '../Icons'
 import Select from '../Select'
 import { OptionType } from '../../lib/types/options'
 import { DateFilter as DateFilterType } from '../../lib/types/date-filter'
@@ -25,14 +25,20 @@ const dateFilterOptions: OptionType<DateFilterType>[] = [
 export default function DateFilter() {
   const { lastDays, startDate, endDate, setDateFilter } = useDateFilter()
 
+  const onGithubClick = () => {
+    window.open(
+      'https://github.com/tinybirdco/log-analytics-starter-kit',
+      '_blank'
+    )
+  }
+
   return (
     <div className="flex items-center gap-4">
-      <iframe
-        // TODO: add &count=true, change width to 170
-        src="https://ghbtns.com/github-btn.html?user=tinybirdco&repo=log-analytics-starter-kit&type=star&size=large"
-        width="75"
-        height="30"
-        title="GitHub"
+      <Button
+        icon={GithubIcon}
+        color="slate"
+        text="Find on GitHub"
+        handleClick={onGithubClick}
       />
 
       <Popover className="relative h-4">
