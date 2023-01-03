@@ -1,6 +1,6 @@
 import { Popover } from '@headlessui/react'
-
-import { CalendarIcon, QuestionIcon } from '../Icons'
+import { Button } from '@tremor/react'
+import { CalendarIcon, GithubIcon, QuestionIcon } from '../Icons'
 import Select from '../Select'
 import { OptionType } from '../../lib/types/options'
 import { DateFilter as DateFilterType } from '../../lib/types/date-filter'
@@ -25,15 +25,29 @@ const dateFilterOptions: OptionType<DateFilterType>[] = [
 export default function DateFilter() {
   const { lastDays, startDate, endDate, setDateFilter } = useDateFilter()
 
+  const onGithubClick = () => {
+    window.open(
+      'https://github.com/tinybirdco/log-analytics-starter-kit',
+      '_blank'
+    )
+  }
+
   return (
     <div className="flex items-center gap-4">
-      <Popover className="relative">
+      <Button
+        icon={GithubIcon}
+        color="slate"
+        text="Find on GitHub"
+        handleClick={onGithubClick}
+      />
+
+      <Popover className="relative h-4">
         <Popover.Button>
           <QuestionIcon className="text-secondaryLight" />
           <div className="sr-only">What is the time zone used?</div>
         </Popover.Button>
 
-        <Popover.Panel className="absolute bg-secondary text-white text-xs font-light rounded py-1 px-2 z-[2]">
+        <Popover.Panel className="absolute bottom-6 -right-10 bg-secondary text-white text-xs font-light rounded py-1 px-2 z-[2] w-24">
           UTC timezone
         </Popover.Panel>
       </Popover>

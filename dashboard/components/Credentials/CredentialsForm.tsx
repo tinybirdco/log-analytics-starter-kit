@@ -42,7 +42,7 @@ export default function CredentialsForm() {
           label="Token"
           id="token"
           name="token"
-          helperMessage="Copy the token named dashboard generated with your web-analytics project."
+          helperMessage="Copy the token named dashboard generated with your log-analytics project."
           placeholder="p.eyJ3kdsfk2395IjogImMzZTMwNDIxLTYwNzctNGZhMS1iMjY1LWQwM2JhZDIzZGRlOCIsICJpZCI6ICIwYmUzNTgzNi0zODAyLTQwMmUtOTUxZi0zOWFm"
         />
         <div className="flex items-end gap-10">
@@ -69,11 +69,23 @@ export default function CredentialsForm() {
             )}
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex flex-col items-end">
           <Button
             text="View dashboard"
             handleClick={() => formRef.current?.requestSubmit()}
           />
+          <p className="text-xs text-neutral-64 mt-3">
+            Not sure what to do next?{' '}
+            <a
+              href="https://github.com/tinybirdco/log-analytics-starter-kit#tinybird-log-analytics-starter-kit"
+              target="blank"
+              rel="noreferrer"
+              className="text-primary underline"
+            >
+              The README for this Starter Kit
+            </a>{' '}
+            explains how to get started
+          </p>
         </div>
       </div>
     </form>
