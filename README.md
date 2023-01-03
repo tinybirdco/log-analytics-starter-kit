@@ -40,7 +40,6 @@ You can bootstrap your [Tinybird](https://www.tinybird.co/) project using this e
 
 ![Tinybird Functions Analytics DataFlow](./assets/img/readme-dataflow.png)
 
-
 ## Deploy
 
 There are two components to this Starter Kit, the frontend application & the Tinybird backend.
@@ -49,7 +48,7 @@ There are two components to this Starter Kit, the frontend application & the Tin
 
 Use the button below to deploy this Starter Kit to Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit&env=TINYBIRD_TOKEN&envDescription=These%20Env%20Vars%20link%20your%20frontend%20to%20the%20Tinybird%20backend.%20See%20the%20Starter%20Kit%20readme%20for%20more%20info.&envLink=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit%23environment-variables&project-name=tinybird-log-analytics-starter-kit&repository-name=tinybird-log-analytics-starter-kit&demo-description=Custom%20analytics%20for%20your%20application%20logs%20using%20Tinybird&demo-url=http%3A%2F%2Flog-analytics.tinybird.co&demo-image=http%3A%2F%2Flog-analytics.tinybird.co%2Fbanner.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit&env=TINYBIRD_TOKEN&envDescription=These%20Env%20Vars%20link%20your%20frontend%20to%20the%20Tinybird%20backend.%20See%20the%20Starter%20Kit%20readme%20for%20more%20info.&envLink=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit%23environment-variables&project-name=tinybird-log-analytics-starter-kit&repository-name=tinybird-log-analytics-starter-kit&demo-description=Custom%20analytics%20for%20your%20application%20logs%20using%20Tinybird&demo-url=http%3A%2F%2Flog-analytics.tinybird.co&demo-image=http%3A%2F%2Flog-analytics.tinybird.co%2Fbanner.png&root-directory=dashboard)
 
 #### Environment Variables
 
@@ -62,4 +61,3 @@ The reference `logger.ts` implementation requires one environment variable to be
 Use the button below to deploy this Starter Kit to Tinybird.
 
 [![Deploy to Tinybird](https://cdn.tinybird.co/button)](https://ui.tinybird.co/workspaces/new?name=log_analytics_starter_kit&starter_kit=log-analytics-starter-kit)
-
