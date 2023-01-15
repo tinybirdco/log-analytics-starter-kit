@@ -3,8 +3,8 @@ description: Create a feature request for the Web Analytiocs Starter Kit
 title: "[Feature Request] "
 labels: ["feature request", "triage"]
 assignees:
-  - alejandromav
-  - kukukaka
+  - sdairs
+  - dmytro-tinybird
 body:
   - type: markdown
     attributes:
