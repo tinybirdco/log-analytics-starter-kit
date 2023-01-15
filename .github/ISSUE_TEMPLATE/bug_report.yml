@@ -3,8 +3,8 @@ description: Create a bug report for the Web Analytics Starter Kit
 title: "[Bug] "
 labels: ["bug", "triage"]
 assignees:
-  - alejandromav
-  - kukukaka
+  - sdairs
+  - dmytro-tinybird
 body:
   - type: markdown
     attributes:
