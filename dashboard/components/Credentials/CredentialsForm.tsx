@@ -1,8 +1,7 @@
 import { FormEvent, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Button, SelectBox, SelectBoxItem } from '@tremor/react'
-import Input from '../Input'
+import { Button, SelectBox, SelectBoxItem, TextInput } from '@tremor/react'
 
 import { HostType } from '../../lib/types/credentials'
 import { OptionType } from '../../lib/types/options'
@@ -12,6 +11,7 @@ const hostOptions: OptionType<HostType>[] = [
   { label: HostType.Us, value: HostType.Us },
   { label: 'Other', value: HostType.Other },
 ]
+
 export default function CredentialsForm() {
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
@@ -38,20 +38,26 @@ export default function CredentialsForm() {
       aria-labelledby="credentials-title"
     >
       <div className="space-y-10">
-        <Input
-          label="Token"
-          id="token"
-          name="token"
-          helperMessage="Copy the token named dashboard generated with your log-analytics project."
-          placeholder="p.eyJ3kdsfk2395IjogImMzZTMwNDIxLTYwNzctNGZhMS1iMjY1LWQwM2JhZDIzZGRlOCIsICJpZCI6ICIwYmUzNTgzNi0zODAyLTQwMmUtOTUxZi0zOWFm"
-        />
+        <div className="space-y-1">
+          <label className="block text-sm font-normal text-neutral-64">
+            Token
+          </label>
+          <TextInput
+            name="token"
+            placeholder="p.eyJ3kdsfk2395IjogImMzZTMwNDIxLTYwNzctNGZhMS1iMjY1LWQwM2JhZDIzZGRlOCIsICJpZCI6ICIwYmUzNTgzNi0zODAyLTQwMmUtOTUxZi0zOWFm"
+            marginTop="mt-0"
+          />
+          <p className="text-xs text-secondaryLight">
+            Copy the token named dashboard generated with your web-analytics
+            project.
+          </p>
+        </div>
         <div className="flex items-end gap-10">
           <div className="flex-1">
-            <SelectBox
-              defaultValue={hostOptions[0].value}
-              placeholder="Host"
-              handleSelect={setHostType}
-            >
+            <label className="block text-sm font-normal text-neutral-64 mb-1">
+              Host
+            </label>
+            <SelectBox value={hostType} handleSelect={setHostType}>
               {hostOptions.map(({ label, value }) => (
                 <SelectBoxItem key={value} text={label} value={value} />
               ))}
@@ -59,13 +65,12 @@ export default function CredentialsForm() {
           </div>
           <div className="flex-1">
             {hostType === HostType.Other && (
-              <Input
-                id="hostName"
-                name="hostName"
-                placeholder="Host name"
-                label="Host name"
-                isSrLabel
-              />
+              <>
+                <label className="block text-sm font-normal text-neutral-64 mb-1">
+                  Host name
+                </label>
+                <TextInput name="hostName" placeholder="Host name" />
+              </>
             )}
           </div>
         </div>
