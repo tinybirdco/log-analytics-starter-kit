@@ -57,7 +57,7 @@ export default function CredentialsForm() {
             <label className="block text-sm font-normal text-neutral-64 mb-1">
               Host
             </label>
-            <SelectBox value={hostType} handleSelect={setHostType}>
+            <SelectBox value={hostType} onValueChange={setHostType}>
               {hostOptions.map(({ text, value }) => (
                 <SelectBoxItem key={value} text={text} value={value} />
               ))}
