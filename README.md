@@ -14,7 +14,7 @@ This example includes a [Tinybird](https://www.tinybird.co/) data project, [Verc
 
 ### Log Capture
 
-In [logger.ts](./dashboard/lib/logger.ts) you'll find a simple reference implementation for a log capture class in TypeScript. This is built with [Next.js](https://nextjs.org/) in mind, but could be adapted to any other framework or language.
+In [logger.ts](./logger-examples/typescript-nextjs/logger.ts) you'll find a simple reference implementation for a log capture class in TypeScript. This is built with [Next.js](https://nextjs.org/) in mind, but could be adapted to any other framework or language.
 
 The logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
 
@@ -22,7 +22,7 @@ Finally, the log message, level and request info is sent to [Tinybird's Events A
 
 ### Vercel Functions
 
-Two examples of Vercel Functions are included, [genericFunction.ts](./dashboard/pages/api/example/genericFunction.ts) and [getProduct.ts](./dashboard/pages/api/example/getProduct.ts). These functions simply demonstrate how to use the logger in a function, and provide endpoints to hit that generate logs on demand.
+Two examples of Vercel Functions are included, [genericFunction.ts](./logger-examples/typescript-nextjs/example-functions/genericFunction.ts) and [getProduct.ts](./logger-examples/typescript-nextjs/example-functions/getProduct.ts). These functions simply demonstrate how to use the logger in a function, and provide endpoints to hit that generate logs on demand.
 
 ### Web Dashboard
 
