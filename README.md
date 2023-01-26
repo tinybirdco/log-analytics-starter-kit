@@ -52,7 +52,7 @@ Note that this logger expects an Environment Variable `TINYBIRD_TOKEN` to authen
 
 ##### Vercel Functions
 
-An example Vercel Function is included at [getProduct.ts](./logger-examples/typescript-nextjs/getProduct.ts). This function simply demonstrates how to use the logger in a function. 
+An example Vercel Function is included at [getProduct.ts](./logger-examples/typescript-nextjs/getProductExample.ts). This function simply demonstrates how to use the logger in a function. 
 
 #### Python & FastAPI
 
