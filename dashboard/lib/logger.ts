@@ -64,7 +64,7 @@ export class logger {
 
   static async sendToTinybird(data: Record<string, unknown>) {
     await fetch(
-      `https://api.tinybird.co/v0/events?name=function_logs`,
+      `https://api.tinybird.co/v0/events?name=logs`,
       {
         method: 'POST',
         body: JSON.stringify(data),

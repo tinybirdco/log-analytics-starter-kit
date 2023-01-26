@@ -52,7 +52,7 @@ export default function ErrorStats() {
           <div className="hidden sm:block">
             <TabList
               defaultValue="ErrorsFrequency"
-              handleSelect={setSelectedTab}
+              onValueChange={setSelectedTab}
             >
               <Tab value="ErrorsFrequency" text="Error Frequency" />
               <Tab value="FunctionErrors" text="Function Errors" />
@@ -103,7 +103,7 @@ export default function ErrorStats() {
           <div className="grid grid-cols-2 items-center">
             <Bold>Error Per</Bold>
 
-            <SelectBox defaultValue={errorBy} handleSelect={setErrorBy}>
+            <SelectBox defaultValue={errorBy} onValueChange={setErrorBy}>
               {ERROR_PARAM_OPTIONS.map(({ text, value }) => (
                 <SelectBoxItem key={value} {...{ text, value }} />
               ))}
