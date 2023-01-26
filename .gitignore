@@ -6,3 +6,4 @@ node_modules
 dist
 .e
 __pycache__
+.env
