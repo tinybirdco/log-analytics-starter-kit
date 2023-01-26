@@ -54,7 +54,7 @@ Note that this logger expects an Environment Variable `TINYBIRD_TOKEN` to authen
 
 An example Vercel Function is included at [getProduct.ts](./logger-examples/typescript-nextjs/getProduct.ts). This function simply demonstrates how to use the logger in a function. 
 
-#### Python
+#### Python & FastAPI
 
 In [logger.py](./logger-examples/python-fastapi/logger.py) you'll find a simple reference implementation for a log capture class in Python. This is built with [FastAPI](https://fastapi.tiangolo.com/) in mind, but could be adapted to any other framework.
 
