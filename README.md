@@ -48,9 +48,11 @@ The logger exposes 3 methods `info`, `warn` and `error` that can be used to capt
 
 Finally, the log message, level and request info is sent to [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html) as JSON via a standard HTTP POST request.
 
+Note that this logger expects an Environment Variable `TINYBIRD_TOKEN` to authenticate the request to Tinybird. You can copy this token from your Tinybird account by logging into the Tinybird UI.
+
 ##### Vercel Functions
 
-An example Vercel Function is included at [getProduct.ts](./logger-examples/typescript-nextjs/getProduct.ts). This function simply demonstrates how to use the logger in a function.
+An example Vercel Function is included at [getProduct.ts](./logger-examples/typescript-nextjs/getProduct.ts). This function simply demonstrates how to use the logger in a function. 
 
 #### Python
 
@@ -59,6 +61,8 @@ In [logger.py](./logger-examples/python-fastapi/logger.py) you'll find a simple 
 The logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
 
 Finally, the log message, level and request info is sent to [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html) as JSON via a standard HTTP POST request.
+
+Note that this logger expects an Environment Variable `TINYBIRD_TOKEN` to authenticate the request to Tinybird. You can copy this token from your Tinybird account by logging into the Tinybird UI.
 
 ##### FastAPI Endpoint
 
@@ -79,10 +83,4 @@ Use the button below to deploy this Starter Kit to Tinybird.
 
 Use the button below to deploy this Starter Kit to Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit&env=TINYBIRD_TOKEN&envDescription=These%20Env%20Vars%20link%20your%20frontend%20to%20the%20Tinybird%20backend.%20See%20the%20Starter%20Kit%20readme%20for%20more%20info.&envLink=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit%23environment-variables&project-name=tinybird-log-analytics-starter-kit&repository-name=tinybird-log-analytics-starter-kit&demo-description=Custom%20analytics%20for%20your%20application%20logs%20using%20Tinybird&demo-url=http%3A%2F%2Flog-analytics.tinybird.co&demo-image=http%3A%2F%2Flog-analytics.tinybird.co%2Fbanner.png&root-directory=dashboard)
-
-#### Environment Variables (Optional)
-
-If you want to test out the included Vercel Functions using the sample TypeScript & Next.js Logger, you must include an Environment Variable with the deployment of the Analytics Dashboard app.
-
-- `TINYBIRD_TOKEN` is the append Auth Token that gives permission to send logs to the Data Source in Tinybird. You will need to copy this out of your Tinybird account by logging into the Tinybird UI.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit&project-name=tinybird-log-analytics-starter-kit&repository-name=tinybird-log-analytics-starter-kit&demo-description=Custom%20analytics%20for%20your%20application%20logs%20using%20Tinybird&demo-url=http%3A%2F%2Flog-analytics.tinybird.co&demo-image=http%3A%2F%2Flog-analytics.tinybird.co%2Fbanner.png&root-directory=dashboard)
