@@ -40,15 +40,13 @@ There is no caching or frontend magic, every chart is consuming live data in rea
 
 All examples of capturing logs use the [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html), sending logs as JSON via a standard HTTP POST request. Because this is simply JSON over HTTP, you can use this approach to integrate any framework, language or application to send data to [Tinybird](https://www.tinybird.co/).
 
+Each logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
+
+Note that each logger expects an Environment Variable `TINYBIRD_TOKEN` to authenticate the request to Tinybird. You can copy this token from your Tinybird account by logging into the Tinybird UI.
+
 #### TypeScript & Next.js
 
 In [logger.ts](./logger-examples/typescript-nextjs/logger.ts) you'll find a simple reference implementation for a log capture class in TypeScript. This is built with [Next.js](https://nextjs.org/) in mind, but could be adapted to any other framework.
-
-The logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
-
-Finally, the log message, level and request info is sent to [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html) as JSON via a standard HTTP POST request.
-
-Note that this logger expects an Environment Variable `TINYBIRD_TOKEN` to authenticate the request to Tinybird. You can copy this token from your Tinybird account by logging into the Tinybird UI.
 
 ##### Vercel Functions
 
@@ -57,12 +55,6 @@ An example Vercel Function is included at [getProductExample.ts](./logger-exampl
 #### Python & FastAPI
 
 In [logger.py](./logger-examples/python-fastapi/logger.py) you'll find a simple reference implementation for a log capture class in Python. This is built with [FastAPI](https://fastapi.tiangolo.com/) in mind, but could be adapted to any other framework.
-
-The logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
-
-Finally, the log message, level and request info is sent to [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html) as JSON via a standard HTTP POST request.
-
-Note that this logger expects an Environment Variable `TINYBIRD_TOKEN` to authenticate the request to Tinybird. You can copy this token from your Tinybird account by logging into the Tinybird UI.
 
 ##### FastAPI Endpoint
 
