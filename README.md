@@ -14,9 +14,10 @@ This is an opinionated Starter Kit that uses Web Applications as the example, bu
 
 This Starter Kit includes:
 - [Tinybird](https://www.tinybird.co/) data project
-- [Next.js](https://nextjs.org/) & [Tremor](https://www.tremor.so/) dashboard
-- TypeScript & Next.js Logger + example [Vercel](https://vercel.com/) functions
-- Python & FastAPI Logger
+- Analytics Dashboard built with [Next.js](https://nextjs.org/) & [Tremor](https://www.tremor.so/) 
+- Example Log Capture implementations
+  - TypeScript & Next.js Logger + example [Vercel](https://vercel.com/) functions
+  - Python & FastAPI Logger
 
 ### Tinybird Data Project
 
