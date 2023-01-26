@@ -1,24 +1,17 @@
 import { NextRequest } from 'next/server'
-import { logger } from '../../../lib/logger'
+import { logger } from '../logger'
 
-/**
- * @swagger
- * /api/example/getProduct:
- *   get:
- *     description: Returns product
- *     parameters:
- *      - name: product_id
- *        in: query
- *        description: Product's id
- *        required: true
- *        schema:
- *          type: string
- *     responses:
- *       200:
- *         description: Tracks product and returns success message
- *       400:
- *         description: Tracks error and returns error message
- */
+/*
+ *
+ * This is an example Vercel Edge Function.
+ * It shows how you can use the sample TypeScript Logger in your code to capture logs.
+ * You can deploy this function to Vercel to try it out.
+ * When you hit the API that invokes this function, it will look for a 'product_id' query parameter.
+ * If you provide the query parameter, it will create an INFO level log.
+ * If you do NOT provide the query paramter, it will create an ERROR level log.
+ * 
+*/
+
 const getProduct = (req: NextRequest) => {
   const { searchParams } = new URL(req.url)
   const product_id = searchParams.get('product_id')

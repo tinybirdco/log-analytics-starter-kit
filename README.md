@@ -42,19 +42,27 @@ All examples of capturing logs use the [Tinybird's Events API](https://www.tinyb
 
 #### TypeScript & Next.js
 
-In [logger.ts](./dashboard/lib/logger.ts) you'll find a simple reference implementation for a log capture class in TypeScript. This is built with [Next.js](https://nextjs.org/) in mind, but could be adapted to any other framework.
+In [logger.ts](./logger-examples/typescript-nextjs/logger.ts) you'll find a simple reference implementation for a log capture class in TypeScript. This is built with [Next.js](https://nextjs.org/) in mind, but could be adapted to any other framework.
 
 The logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
 
 Finally, the log message, level and request info is sent to [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html) as JSON via a standard HTTP POST request.
 
-#### Vercel Functions
+##### Vercel Functions
 
-Two examples of Vercel Functions are included, [genericFunction.ts](./dashboard/pages/api/example/genericFunction.ts) and [getProduct.ts](./dashboard/pages/api/example/getProduct.ts). These functions simply demonstrate how to use the logger in a function.
+An example Vercel Function is included at [getProduct.ts](./logger-examples/typescript-nextjs/getProduct.ts). This function simply demonstrates how to use the logger in a function.
 
 #### Python
 
-TODO
+In [logger.py](./logger-examples/python-fastapi/logger.py) you'll find a simple reference implementation for a log capture class in Python. This is built with [FastAPI](https://fastapi.tiangolo.com/) in mind, but could be adapted to any other framework.
+
+The logger exposes 3 methods `info`, `warn` and `error` that can be used to capture log messages with different log levels. Each one in turn calls the `log` method, which captures additional information about the incoming request.
+
+Finally, the log message, level and request info is sent to [Tinybird's Events API](https://www.tinybird.co/docs/guides/high-frequency-ingestion.html) as JSON via a standard HTTP POST request.
+
+##### FastAPI Endpoint
+
+An example FastAPI Endpoint is included at [main.py](./logger-examples/python-fastapi/main.py). This endpoint simply demonstrates how to use the logger in a function.
 
 ## Deploy
 
