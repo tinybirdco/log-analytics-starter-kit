@@ -6,6 +6,8 @@
 
 Data can help developers build better software, but it can be hard to find data tools that are easy to integrate, scale with you as you grow, and are flexible enough to meet different demands. This Stater Kit provides an example for you can build your own logging & telemetry solution powered by [Tinybird](https://www.tinybird.co/).
 
+This is an opinionated Starter Kit that uses Web Applications as the example, but you can use this kit to bootstrap logging for *any* software project. Take this kit and make it your own!
+
 ![Tinybird Functions Analytics Dashboard](./assets/img/readme-dashboard.png)
 
 ## What's in the box?
