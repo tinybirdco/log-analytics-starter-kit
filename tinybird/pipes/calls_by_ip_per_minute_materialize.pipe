@@ -5,7 +5,7 @@ SQL >
         toStartOfMinute(event_ts) AS minute,
         ip_address,
         countState() AS total
-    FROM function_logs
+    FROM logs
     GROUP BY
         ip_address,
         minute

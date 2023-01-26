@@ -9,7 +9,7 @@ SQL >
         {{ column(per_filter, "osname") }},
         count() as total,
         {{ String(per_filter, "osname") }} as per_filter
-    FROM function_logs
+    FROM logs
     WHERE
         log_level == 'ERROR'
         {% if defined(date_from) and defined(date_to) %}
