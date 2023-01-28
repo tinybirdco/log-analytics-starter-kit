@@ -96,3 +96,31 @@ export function GithubIcon({ size = 16, className }: IconProps) {
     </svg>
   )
 }
+
+export function TinybirdIcon({ size = 16, className }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      className={className}
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        opacity="0.6"
+        d="M16.0001 1.37011L11.0053 0.00012207L9.2478 3.92741L16.0001 1.37011Z"
+        fill="currentColor"
+      />
+      <path
+        opacity="0.6"
+        d="M11.3026 11.0113L6.75028 9.16367L3.96313 16.0001L11.3026 11.0113Z"
+        fill="currentColor"
+      />
+      <path
+        d="M5.66212e-05 7.038L11.2236 11.0549L13.0643 2.47308L5.66212e-05 7.038Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}

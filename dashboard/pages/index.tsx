@@ -3,6 +3,7 @@ import ErrorModal from '../components/ErrorModal'
 import Credentials from '../components/Credentials'
 import DateFilter from '../components/DateFilter'
 import Dashboard from '../components/Dashboard'
+import MockingbirdWidget from '../components/MockingbirdWidget'
 
 import useAuth from '../lib/hooks/use-auth'
 
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <Meta />
+      <MockingbirdWidget />
 
       <div className="bg-body min-h-screen py-5 px-5 sm:px-10 text-sm leading-5 text-secondary">
         {isAuthenticated && isTokenValid && (
