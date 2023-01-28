@@ -6,6 +6,7 @@ import Dashboard from '../components/Dashboard'
 import MockingbirdWidget from '../components/MockingbirdWidget'
 
 import useAuth from '../lib/hooks/use-auth'
+import { GithubIcon } from '../components/Icons'
 
 export default function Home() {
   const { isAuthenticated, isTokenValid } = useAuth()
@@ -23,7 +24,17 @@ export default function Home() {
               <h1 className="font-semibold text-lg leading-6">
                 Log Analytics Starter Kit
               </h1>
-              <div className="justify-self-end">
+              <div className="flex items-center gap-4 justify-self-end">
+                <a
+                  href="https://github.com/tinybirdco/log-analytics-starter-kit"
+                  target="blank"
+                  rel="noreferrer"
+                >
+                  <GithubIcon
+                    size={24}
+                    className="text-gray-700 hover:text-gray-900 cursor-pointer"
+                  />
+                </a>
                 <DateFilter />
               </div>
             </div>
