@@ -1,6 +1,7 @@
 TOKEN logger APPEND
 
 SCHEMA >
+    `acceptcharset` String `json:$.acceptcharset`,
     `acceptencoding` String `json:$.acceptencoding`,
     `acceptlanguage` String `json:$.acceptlanguage`,
     `browsername` String `json:$.browsername`,
