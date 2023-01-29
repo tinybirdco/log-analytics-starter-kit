@@ -1,6 +1,8 @@
-TOKEN logger APPEND
+TOKEN app APPEND
+TOKEN app CREATE
 
 SCHEMA >
+    `acceptcharset` String `json:$.acceptcharset`,
     `acceptencoding` String `json:$.acceptencoding`,
     `acceptlanguage` String `json:$.acceptlanguage`,
     `browsername` String `json:$.browsername`,

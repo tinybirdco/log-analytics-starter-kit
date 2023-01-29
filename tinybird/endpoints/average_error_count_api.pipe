@@ -1,4 +1,4 @@
-TOKEN dashboard READ
+TOKEN app READ
 
 NODE total_errors_per_function
 SQL >
