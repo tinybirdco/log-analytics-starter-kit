@@ -14,17 +14,13 @@ export default function Home() {
   return (
     <>
       <Meta />
-      <MockingbirdWidget />
 
       <div className="bg-body min-h-screen py-5 px-5 sm:px-10 text-sm leading-5 text-secondary">
         {isAuthenticated && isTokenValid && (
           <header>
-            <img src="/icon.png" alt="" width={24} height={24} />
-            <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 mt-7 mb-10 w-f">
-              <h1 className="font-semibold text-lg leading-6">
-                Log Analytics Starter Kit
-              </h1>
-              <div className="flex items-center gap-4 justify-self-end">
+            <div className="flex items-center justify-between">
+              <img src="/icon.png" alt="" width={24} height={24} />
+              <div className="flex items-center gap-4">
                 <a
                   href="https://github.com/tinybirdco/log-analytics-starter-kit"
                   target="blank"
@@ -35,6 +31,14 @@ export default function Home() {
                     className="text-gray-700 hover:text-gray-900 cursor-pointer"
                   />
                 </a>
+                <MockingbirdWidget />
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 mt-7 mb-10 w-f">
+              <h1 className="font-semibold text-lg leading-6">
+                Log Analytics Starter Kit
+              </h1>
+              <div className="justify-self-end">
                 <DateFilter />
               </div>
             </div>

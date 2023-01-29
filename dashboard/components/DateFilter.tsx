@@ -37,10 +37,10 @@ export default function DateFilter() {
   const { dateRangePickerValue, onDateRangePickerValueChange } = useDateFilter()
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center sm:gap-4">
       <Popover className="relative h-4">
         <Popover.Button>
-          <QuestionIcon className="text-secondaryLight" />
+          <QuestionIcon className="text-secondaryLight hidden sm:block" />
           <div className="sr-only">What is the time zone used?</div>
         </Popover.Button>
 
