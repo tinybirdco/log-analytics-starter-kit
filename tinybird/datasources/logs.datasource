@@ -1,4 +1,5 @@
-TOKEN logger APPEND
+TOKEN app APPEND
+TOKEN app CREATE
 
 SCHEMA >
     `acceptcharset` String `json:$.acceptcharset`,
