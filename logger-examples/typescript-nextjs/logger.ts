@@ -53,7 +53,7 @@ export class logger {
       enginename: engine.name ? engine.name : 'unknown',
       engineversion: engine.version ? engine.version : 'unknown',
       osname: os.name ? os.name : 'unknown',
-      osverison: os.version ? os.version : 'unknown',
+      osversion: os.version ? os.version : 'unknown',
       cpuarchitecture: cpu.architecture ? cpu.architecture : 'unknown',
       log_level: logLevel,
       log_message: logMessage,
