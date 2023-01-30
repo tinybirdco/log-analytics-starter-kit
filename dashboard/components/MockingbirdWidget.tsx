@@ -4,6 +4,7 @@ import { TextInput } from '@tremor/react'
 import { useRef, useState } from 'react'
 import useAuth from '../lib/hooks/use-auth'
 import { HostType } from '../lib/types/credentials'
+import { cx } from '../lib/utils'
 import { createWorker, startWorker, stopWorker } from '../lib/workerBuilder'
 
 import { CogIcon, PauseIcon, PlayIcon } from './Icons'
@@ -50,40 +51,55 @@ export default function MockingbirdWidget() {
   }
 
   return (
-    <div className="flex items-center divide-x-2 divide-tertiary bg-success rounded-sm px-3 py-2">
-      <p className="whitespace-nowrap text-tertiary font-semibold pr-2">
+    <div className="flex items-center gap-0.5">
+      <p className="flex items-center bg-blue-500 text-white font-bold text-sm px-4 py-2 h-10 rounded-tl rounded-bl">
         Generate data
       </p>
-      <Popover className="relative h-4">
-        <Popover.Button className="text-tertiary px-2">
-          <CogIcon />
-        </Popover.Button>
+      <Popover className="relative">
+        {({ open }) => (
+          <>
+            <Popover.Button
+              className={cx(
+                'text-white p-3 bg-blue-500 hover:bg-blueHover1',
+                open && 'bg-blueHover2 hover:bg-blueHover2'
+              )}
+            >
+              <CogIcon />
+            </Popover.Button>
 
-        <Popover.Panel className="absolute top-6 border-t-2 flex flex-col shadow gap-2 border-tertiary -right-[38px] bg-body text-tertiary rounded-bl rounded-br py-2 px-2 z-[2] w-[188.4px]">
-          <TextInput
-            value={token}
-            onChange={e => setToken(e.target.value)}
-            placeholder="Token"
-          />
-          <TextInput
-            value={host}
-            onChange={e => setHost(e.target.value)}
-            placeholder="Host"
-          />
-          <TextInput
-            value={eps}
-            onChange={e => setEPS(e.target.value)}
-            placeholder="EPS"
-          />
-          <TextInput
-            value={limit}
-            onChange={e => setLimit(e.target.value)}
-            placeholder="Limit"
-          />
-        </Popover.Panel>
+            <Popover.Panel className="z-[2] absolute w-[213.3px] top-11 -right-[42.15px] flex flex-col shadow gap-2 bg-white rounded p-2">
+              <TextInput
+                value={token}
+                onChange={e => setToken(e.target.value)}
+                placeholder="Token"
+              />
+              <TextInput
+                value={host}
+                onChange={e => setHost(e.target.value)}
+                placeholder="Host"
+              />
+              <TextInput
+                value={eps}
+                onChange={e => setEPS(e.target.value)}
+                placeholder="EPS"
+              />
+              <TextInput
+                value={limit}
+                onChange={e => setLimit(e.target.value)}
+                placeholder="Limit"
+              />
+            </Popover.Panel>
+          </>
+        )}
       </Popover>
 
-      <button className="text-tertiary pl-2" onClick={onGenerateClick}>
+      <button
+        className={cx(
+          'p-3 text-white bg-blue-500 hover:bg-blueHover1 rounded-tr rounded-br',
+          isGenerating && 'bg-blueHover2 hover:bg-blueHover2'
+        )}
+        onClick={onGenerateClick}
+      >
         {isGenerating ? <PauseIcon /> : <PlayIcon />}
       </button>
     </div>
