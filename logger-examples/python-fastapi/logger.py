@@ -58,7 +58,7 @@ def log(req: Request, log_level, log_message):
         "enginename": 'unknown',
         "engineversion": 'unknown',
         "osname": user_agent.os.family if user_agent.os.family else 'unknown',
-        "osverison": user_agent.os.version_string if user_agent.os.version_string else 'unknown',
+        "osversion": user_agent.os.version_string if user_agent.os.version_string else 'unknown',
         "cpuarchitecture": 'unknown',
         "log_level": log_level,
         "log_message": log_message,

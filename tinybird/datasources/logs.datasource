@@ -1,6 +1,8 @@
-TOKEN logger APPEND
+TOKEN app APPEND
+TOKEN app CREATE
 
 SCHEMA >
+    `acceptcharset` String `json:$.acceptcharset`,
     `acceptencoding` String `json:$.acceptencoding`,
     `acceptlanguage` String `json:$.acceptlanguage`,
     `browsername` String `json:$.browsername`,
@@ -34,6 +36,7 @@ SCHEMA >
     `xforwaredforip` String `json:$.xforwaredforip`,
     `origin` String `json:$.origin`,
     `referer` String `json:$.referer`,
+    `contentlength` String `json:$.contentlength`,
     `contenttype` String `json:$.contenttype`,
     `from` String `json:$.from`,
     `via` String `json:$.via`
