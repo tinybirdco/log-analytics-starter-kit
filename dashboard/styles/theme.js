@@ -1,6 +1,8 @@
 const colors = {
   current: 'currentColor',
   primary: '#0066FF',
+  blueHover1: '#0B5EE5',
+  blueHover2: '#0950C3',
   primaryDark: '#0146AE',
   primaryLight: '#e5f0ff',
   secondary: '#25283D',

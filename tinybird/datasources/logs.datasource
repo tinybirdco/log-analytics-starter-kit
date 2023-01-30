@@ -36,6 +36,7 @@ SCHEMA >
     `xforwaredforip` String `json:$.xforwaredforip`,
     `origin` String `json:$.origin`,
     `referer` String `json:$.referer`,
+    `contentlength` String `json:$.contentlength`,
     `contenttype` String `json:$.contenttype`,
     `from` String `json:$.from`,
     `via` String `json:$.via`

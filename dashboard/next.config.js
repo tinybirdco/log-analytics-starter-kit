@@ -6,13 +6,6 @@ const nextConfig = {
     locales: ['en'],
     defaultLocale: 'en',
   },
-  experimental: {
-    transpilePackages: [
-      'react-syntax-highlighter',
-      'swagger-client',
-      'swagger-ui-react',
-    ],
-  },
 }
 
 module.exports = nextConfig
