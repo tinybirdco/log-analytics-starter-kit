@@ -75,4 +75,4 @@ Use the button below to deploy this Starter Kit to Tinybird.
 
 Use the button below to deploy this Starter Kit to Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit&project-name=tinybird-log-analytics-starter-kit&repository-name=tinybird-log-analytics-starter-kit&demo-description=Custom%20analytics%20for%20your%20application%20logs%20using%20Tinybird&demo-url=http%3A%2F%2Flog-analytics.tinybird.co&demo-image=http%3A%2F%2Flog-analytics.tinybird.co%2Fbanner.png&root-directory=dashboard)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftinybirdco%2Flog-analytics-starter-kit&project-name=tinybird-log-analytics-starter-kit&repository-name=tinybird-log-analytics-starter-kit&demo-description=Custom%20analytics%20for%20your%20application%20logs%20using%20Tinybird&demo-url=http%3A%2F%2Flog-analytics.tinybird.co&demo-image=http%3A%2F%2Flog-analytics.tinybird.co%2Fbanner.png&root-directory=dashboard&integration-ids=oac_uoH2YyxhaS1H6UYvtuRbRbDY)
