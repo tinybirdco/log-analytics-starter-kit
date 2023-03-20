@@ -23,7 +23,7 @@ export default function BasicStatsContent() {
             <AreaChart
               data={functionCallsData ?? []}
               categories={['info', 'warn', 'error']}
-              dataKey="hour"
+              index="hour"
               colors={['blue', 'amber', 'red']}
             />
           )}
