@@ -63,32 +63,35 @@ export default function MockingbirdWidget() {
                 'text-white p-3 bg-blue-500 hover:bg-blueHover1',
                 open && 'bg-blueHover2 hover:bg-blueHover2'
               )}
+              disabled={isGenerating}
             >
               <CogIcon />
             </Popover.Button>
 
-            <Popover.Panel className="z-[2] absolute w-[213.3px] top-11 -right-[42.15px] flex flex-col shadow gap-2 bg-white rounded p-2">
-              <TextInput
-                value={token}
-                onChange={e => setToken(e.target.value)}
-                placeholder="Token"
-              />
-              <TextInput
-                value={host}
-                onChange={e => setHost(e.target.value)}
-                placeholder="Host"
-              />
-              <TextInput
-                value={eps}
-                onChange={e => setEPS(e.target.value)}
-                placeholder="EPS"
-              />
-              <TextInput
-                value={limit}
-                onChange={e => setLimit(e.target.value)}
-                placeholder="Limit"
-              />
-            </Popover.Panel>
+            {open && !isGenerating && (
+              <Popover.Panel className="z-[2] absolute w-[213.3px] top-11 -right-[42.15px] flex flex-col shadow gap-2 bg-white rounded p-2">
+                <TextInput
+                  value={token}
+                  onChange={e => setToken(e.target.value)}
+                  placeholder="Token"
+                />
+                <TextInput
+                  value={host}
+                  onChange={e => setHost(e.target.value)}
+                  placeholder="Host"
+                />
+                <TextInput
+                  value={eps}
+                  onChange={e => setEPS(e.target.value)}
+                  placeholder="EPS"
+                />
+                <TextInput
+                  value={limit}
+                  onChange={e => setLimit(e.target.value)}
+                  placeholder="Limit"
+                />
+              </Popover.Panel>
+            )}
           </>
         )}
       </Popover>
