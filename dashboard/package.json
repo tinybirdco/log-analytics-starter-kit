@@ -14,7 +14,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.5",
     "@tinybirdco/mockingbird": "^1.0.4",
-    "@tremor/react": "^1.5.0",
+    "@tremor/react": "^2.0.2",
     "cross-fetch": "^3.1.5",
     "moment": "^2.29.4",
     "next": "13.0.4",

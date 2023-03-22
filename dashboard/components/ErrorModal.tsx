@@ -62,11 +62,9 @@ export default function ErrorModal() {
           </Modal.Description>
         </div>
         <div className="flex justify-end">
-          <Button
-            importance="secondary"
-            text="Close"
-            handleClick={handleClose}
-          />
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
         </div>
       </Modal.Content>
     </Modal>

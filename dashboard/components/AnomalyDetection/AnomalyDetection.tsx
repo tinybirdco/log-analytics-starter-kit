@@ -35,7 +35,7 @@ export default function AnomalyDetection() {
             <BarChart
               data={ipsWithMostCallsData ?? []}
               categories={['total']}
-              dataKey="ip_address"
+              index="ip_address"
               colors={['blue']}
             />
           )}
@@ -49,7 +49,7 @@ export default function AnomalyDetection() {
             <BarChart
               data={ipsExceedingAvgCallsPerMinuteData ?? []}
               categories={['total']}
-              dataKey="ip_address"
+              index="ip_address"
               colors={['blue']}
             />
           )}

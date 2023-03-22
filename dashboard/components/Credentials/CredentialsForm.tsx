@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Button, SelectBox, SelectBoxItem, TextInput } from '@tremor/react'
@@ -14,7 +14,6 @@ const hostOptions: OptionType<HostType>[] = [
 
 export default function CredentialsForm() {
   const router = useRouter()
-  const formRef = useRef<HTMLFormElement>(null)
   const [hostType, setHostType] = useState<HostType>(hostOptions[0].value)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -32,7 +31,6 @@ export default function CredentialsForm() {
 
   return (
     <form
-      ref={formRef}
       onSubmit={handleSubmit}
       className="flex flex-col justify-between h-full"
       aria-labelledby="credentials-title"
@@ -45,7 +43,6 @@ export default function CredentialsForm() {
           <TextInput
             name="token"
             placeholder="p.eyJ3kdsfk2395IjogImMzZTMwNDIxLTYwNzctNGZhMS1iMjY1LWQwM2JhZDIzZGRlOCIsICJpZCI6ICIwYmUzNTgzNi0zODAyLTQwMmUtOTUxZi0zOWFm"
-            marginTop="mt-0"
           />
           <p className="text-xs text-secondaryLight">
             Copy the token named dashboard generated with your web-analytics
@@ -57,7 +54,10 @@ export default function CredentialsForm() {
             <label className="block text-sm font-normal text-neutral-64 mb-1">
               Host
             </label>
-            <SelectBox value={hostType} onValueChange={setHostType}>
+            <SelectBox
+              value={hostType}
+              onValueChange={value => setHostType(value as HostType)}
+            >
               {hostOptions.map(({ text, value }) => (
                 <SelectBoxItem key={value} text={text} value={value} />
               ))}
@@ -75,10 +75,7 @@ export default function CredentialsForm() {
           </div>
         </div>
         <div className="flex flex-col items-end">
-          <Button
-            text="View dashboard"
-            handleClick={() => formRef.current?.requestSubmit()}
-          />
+          <Button type="submit">View dashboard</Button>
           <p className="text-xs text-neutral-64 mt-3">
             Not sure what to do next?{' '}
             <a
