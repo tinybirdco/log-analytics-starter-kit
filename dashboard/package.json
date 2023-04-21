@@ -14,13 +14,14 @@
   "dependencies": {
     "@headlessui/react": "^1.7.5",
     "@tinybirdco/mockingbird": "^1.0.4",
-    "@tremor/react": "^2.0.2",
+    "@tremor/react": "^2.2.0",
     "cross-fetch": "^3.1.5",
     "moment": "^2.29.4",
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "swr": "^1.3.0"
+    "swr": "^1.3.0",
+    "tailwindcss": "^3.3.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -37,7 +38,6 @@
     "jsdom": "^20.0.3",
     "msw": "^0.49.2",
     "postcss": "^8.4.19",
-    "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
     "vitest": "^0.25.8"
   }
