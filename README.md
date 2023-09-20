@@ -6,15 +6,16 @@
 
 Data can help developers build better software, but it can be hard to find data tools that are easy to integrate, scale with you as you grow, and are flexible enough to meet different demands. This Stater Kit provides an example for you can build your own logging & telemetry solution powered by [Tinybird](https://www.tinybird.co/).
 
-This is an opinionated Starter Kit that uses Web Applications as the example, but you can use this kit to bootstrap logging for *any* software project. Take this kit and make it your own!
+This is an opinionated Starter Kit that uses Web Applications as the example, but you can use this kit to bootstrap logging for _any_ software project. Take this kit and make it your own!
 
 ![Tinybird Functions Analytics Dashboard](./assets/img/readme-dashboard.png)
 
 ## What's in the box?
 
 This Starter Kit includes:
+
 - [Tinybird](https://www.tinybird.co/) data project
-- Analytics Dashboard built with [Next.js](https://nextjs.org/) & [Tremor](https://www.tremor.so/) 
+- Analytics Dashboard built with [Next.js](https://nextjs.org/) & [Tremor](https://www.tremor.so/)
 - Example Log Capture implementations
   - TypeScript & Next.js Logger + example [Vercel](https://vercel.com/) functions
   - Python & FastAPI Logger
@@ -29,12 +30,11 @@ The [Tinybird](https://www.tinybird.co/) data project includes all of the Tinybi
 
 The Analytics Dashboard is an example of how of you can build your own frontend to visualize the data from Tinybird.
 
-The dashboard is implemented using [Next.js](https://nextjs.org/) & [Tremor](https://www.tremor.so/). All of the charts on the dashboard consume data over the HTTP API Endpoints that are publish from [Tinybird](https://www.tinybird.co/). 
+The dashboard is implemented using [Next.js](https://nextjs.org/) & [Tremor](https://www.tremor.so/). All of the charts on the dashboard consume data over the HTTP API Endpoints that are publish from [Tinybird](https://www.tinybird.co/).
 
 There is no caching or frontend magic, every chart is consuming live data in real time.
 
 ![Tinybird Functions Analytics Dashboard](./assets/img/readme-dashboard.png)
-
 
 ### Example Log Capture
 
@@ -50,7 +50,7 @@ In [logger.ts](./logger-examples/typescript-nextjs/logger.ts) you'll find a simp
 
 ##### Vercel Functions
 
-An example Vercel Function is included at [getProductExample.ts](./logger-examples/typescript-nextjs/getProductExample.ts). This function simply demonstrates how to use the logger in a function. 
+An example Vercel Function is included at [getProductExample.ts](./logger-examples/typescript-nextjs/getProductExample.ts). This function simply demonstrates how to use the logger in a function.
 
 #### Python & FastAPI
 
@@ -68,8 +68,7 @@ There are two components to this Starter Kit that you need to deploy.
 
 Use the button below to deploy this Starter Kit to Tinybird.
 
-[![Deploy to Tinybird](https://cdn.tinybird.co/button)](https://ui.tinybird.co/workspaces/new?name=log_analytics_starter_kit&starter_kit=log-analytics-starter-kit)
-
+[![Deploy to Tinybird](https://cdn.tinybird.co/static/images/Tinybird-Deploy-Button.svg)](https://ui.tinybird.co/workspaces/new?name=log_analytics_starter_kit&starter_kit=log-analytics-starter-kit)
 
 ### 2. Analytics Dashboard
 
