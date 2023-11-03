@@ -23,6 +23,6 @@ async function getErrorFrequency(
 }
 
 export default function useErrorFrequency() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getErrorFrequency)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getErrorFrequency)
 }

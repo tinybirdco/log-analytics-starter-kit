@@ -23,6 +23,6 @@ async function getAverageCallsPerIP(
 }
 
 export default function useAverageCallsPerIP() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getAverageCallsPerIP)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getAverageCallsPerIP)
 }

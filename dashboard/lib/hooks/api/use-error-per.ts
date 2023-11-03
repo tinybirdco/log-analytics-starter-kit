@@ -36,13 +36,13 @@ async function getErrorPer(
 }
 
 export default function useErrorPer() {
-  const { startDate, endDate } = useDateFilter()
+  const { from, to } = useDateFilter()
   const router = useRouter()
   const { error_by: errorByParam } = router.query
   const errorBy = isErrorParam(errorByParam)
     ? errorByParam
     : ERROR_PARAM_OPTIONS[0].value
-  const query = useQuery([errorBy, startDate, endDate, PIPE_NAME], getErrorPer)
+  const query = useQuery([errorBy, from, to, PIPE_NAME], getErrorPer)
   const setErrorBy = (errorBy: string) => {
     const searchParams = new URLSearchParams(window.location.search)
     searchParams.set('error_by', errorBy)

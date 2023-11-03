@@ -1,4 +1,4 @@
-const colors = {
+const colorsTinybird = {
   current: 'currentColor',
   primary: '#0066FF',
   blueHover1: '#0B5EE5',
@@ -24,4 +24,4 @@ const typography = {
   fontFamily: 'Inter var',
 }
 
-module.exports = { colors, typography }
+module.exports = { colorsTinybird, typography }

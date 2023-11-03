@@ -21,6 +21,6 @@ async function getIPsWithMostCalls(
 }
 
 export default function useIPsWithMostCalls() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getIPsWithMostCalls)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getIPsWithMostCalls)
 }

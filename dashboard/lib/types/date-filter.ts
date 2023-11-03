@@ -10,7 +10,7 @@ export enum DateFilter {
 export type DateRangePickerOption = {
   value: string
   text: string
-  startDate: Date
+  from: Date
 }
 
 export const dateFormat = 'YYYY-MM-DD'

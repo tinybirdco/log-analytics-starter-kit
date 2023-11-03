@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Button, SelectBox, SelectBoxItem, TextInput } from '@tremor/react'
+import { Button, Select, SelectItem, TextInput } from '@tremor/react'
 
 import { HostType } from '../../lib/types/credentials'
 import { OptionType } from '../../lib/types/options'
@@ -54,14 +54,16 @@ export default function CredentialsForm() {
             <label className="block text-sm font-normal text-neutral-64 mb-1">
               Host
             </label>
-            <SelectBox
+            <Select
               value={hostType}
               onValueChange={value => setHostType(value as HostType)}
             >
               {hostOptions.map(({ text, value }) => (
-                <SelectBoxItem key={value} text={text} value={value} />
+                <SelectItem key={value} value={value}>
+                  {text}
+                </SelectItem>
               ))}
-            </SelectBox>
+            </Select>
           </div>
           <div className="flex-1">
             {hostType === HostType.Other && (

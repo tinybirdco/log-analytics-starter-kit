@@ -2,15 +2,18 @@ import { useState } from 'react'
 
 import {
   Card,
-  TabList,
+  TabGroup,
   Tab,
   AreaChart,
   BarList,
   Title,
   Metric,
   Bold,
-  SelectBox,
-  SelectBoxItem,
+  Select,
+  SelectItem,
+  TabList,
+  TabPanel,
+  TabPanels,
 } from '@tremor/react'
 import Loader from '../Loader'
 
@@ -50,7 +53,7 @@ export default function ErrorStats() {
       <div className="grid grid-cols-2 gap-10">
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-9">
           <div className="hidden sm:block">
-            <TabList
+            {/* <TabList
               defaultValue="ErrorsFrequency"
               onValueChange={value =>
                 setSelectedTab(value as typeof selectedTab)
@@ -58,61 +61,74 @@ export default function ErrorStats() {
             >
               <Tab value="ErrorsFrequency" text="Error Frequency" />
               <Tab value="FunctionErrors" text="Function Errors" />
+            </TabList> */}
+          </div>
+
+          <TabGroup defaultIndex={1}>
+            <TabList>
+              <Tab>Errors Frequency</Tab>
+              <Tab>Function Errors</Tab>
             </TabList>
-          </div>
-
-          <div className="flex flex-col gap-10">
-            <div
-              className={cx(
-                'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-                selectedTab !== 'ErrorsFrequency' && 'sm:hidden'
-              )}
+            <TabPanels
+            // className="flex flex-col gap-10"
             >
-              <Bold>Error Frequency</Bold>
+              <TabPanel>
+                <div
+                  className={cx(
+                    'flex flex-col gap-3 sm:[&>:first-child]:hidden',
+                    selectedTab !== 'ErrorsFrequency' && 'sm:hidden'
+                  )}
+                >
+                  <Bold>Error Frequency</Bold>
 
-              {errorFrequencyStatus === 'loading' ? (
-                <Loader />
-              ) : (
-                <AreaChart
-                  data={errorFrequencyData ?? []}
-                  categories={['total']}
-                  index="hour"
-                  colors={['blue']}
-                />
-              )}
-            </div>
+                  {errorFrequencyStatus === 'loading' ? (
+                    <Loader />
+                  ) : (
+                    <AreaChart
+                      data={errorFrequencyData ?? []}
+                      categories={['total']}
+                      index="hour"
+                      colors={['blue']}
+                    />
+                  )}
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div
+                  className={cx(
+                    'flex flex-col gap-3 sm:[&>:first-child]:hidden',
+                    selectedTab !== 'FunctionErrors' && 'sm:hidden'
+                  )}
+                >
+                  <Bold>Function Errors</Bold>
 
-            <div
-              className={cx(
-                'flex flex-col gap-3 sm:[&>:first-child]:hidden',
-                selectedTab !== 'FunctionErrors' && 'sm:hidden'
-              )}
-            >
-              <Bold>Function Errors</Bold>
-
-              <div className="max-h-96 overflow-y-auto">
-                {functionErrorsStatus === 'loading' ? (
-                  <Loader />
-                ) : (
-                  <BarList data={functionErrorsData ?? []} />
-                )}
-              </div>
-            </div>
-          </div>
+                  <div className="max-h-96 overflow-y-auto">
+                    {functionErrorsStatus === 'loading' ? (
+                      <Loader />
+                    ) : (
+                      <BarList data={functionErrorsData ?? []} />
+                    )}
+                  </div>
+                </div>
+              </TabPanel>
+            </TabPanels>
+          </TabGroup>
         </div>
 
         <div className="col-span-2 lg:col-span-1 flex flex-col gap-9">
           <div className="grid grid-cols-2 items-center">
             <Bold>Error Per</Bold>
 
-            <SelectBox defaultValue={errorBy} onValueChange={setErrorBy}>
+            <Select defaultValue={errorBy} onValueChange={setErrorBy}>
               {ERROR_PARAM_OPTIONS.map(({ text, value }) => (
-                <SelectBoxItem key={value} {...{ text, value }} />
+                <SelectItem key={value} value={value}>
+                  {text}
+                </SelectItem>
               ))}
-            </SelectBox>
+            </Select>
           </div>
 
-          <div className="max-h-96 overflow-y-auto">
+          <div className="max-h-96 overflow-y-auto pr-2">
             {errorsPerParamStatus === 'loading' ? (
               <Loader />
             ) : (
