@@ -23,6 +23,6 @@ async function getAverageErrorCount(
 }
 
 export default function useAverageErrorCount() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getAverageErrorCount)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getAverageErrorCount)
 }

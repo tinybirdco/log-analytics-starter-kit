@@ -24,9 +24,9 @@ async function getIPsExceedingAvgCallsPerMinute(
 }
 
 export default function useIPsExceedingAvgCallsPerMinute() {
-  const { startDate, endDate } = useDateFilter()
+  const { from, to } = useDateFilter()
   return useQuery(
-    [startDate, endDate, PIPE_NAME],
+    [from, to, PIPE_NAME],
     getIPsExceedingAvgCallsPerMinute
   )
 }

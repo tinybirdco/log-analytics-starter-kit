@@ -1,5 +1,5 @@
 import { Popover } from '@headlessui/react'
-import { DateRangePicker } from '@tremor/react'
+import { DateRangePicker, DateRangePickerItem } from '@tremor/react'
 import moment from 'moment'
 import { QuestionIcon } from './Icons'
 
@@ -10,26 +10,26 @@ import {
 import useDateFilter from '../lib/hooks/use-date-filter'
 
 const dateFilterOptions: DateRangePickerOption[] = [
-  { text: 'Today', value: DateFilterType.Today, startDate: new Date() },
+  { text: 'Today', value: DateFilterType.Today, from: new Date() },
   {
     text: 'Yesterday',
     value: DateFilterType.Yesterday,
-    startDate: moment().subtract(1, 'days').toDate(),
+    from: moment().subtract(1, 'days').toDate(),
   },
   {
     text: '7 days',
     value: DateFilterType.Last7Days,
-    startDate: moment().subtract(7, 'days').toDate(),
+    from: moment().subtract(7, 'days').toDate(),
   },
   {
     text: '30 days',
     value: DateFilterType.Last30Days,
-    startDate: moment().subtract(30, 'days').toDate(),
+    from: moment().subtract(30, 'days').toDate(),
   },
   {
     text: '12 months',
     value: DateFilterType.Last12Months,
-    startDate: moment().subtract(12, 'months').toDate(),
+    from: moment().subtract(12, 'months').toDate(),
   },
 ]
 
@@ -53,9 +53,14 @@ export default function DateFilter() {
         <DateRangePicker
           value={dateRangePickerValue}
           onValueChange={onDateRangePickerValueChange}
-          options={dateFilterOptions}
-          enableYearPagination
-        />
+          enableYearNavigation
+        >
+          {dateFilterOptions.map(({ text, value, from }) => (
+            <DateRangePickerItem key={text} value={value} from={from}>
+              {text}
+            </DateRangePickerItem>
+          ))}
+        </DateRangePicker>
       </div>
     </div>
   )

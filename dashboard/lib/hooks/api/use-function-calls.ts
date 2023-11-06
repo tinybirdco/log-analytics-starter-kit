@@ -39,6 +39,6 @@ async function getFunctionCalls(
 }
 
 export default function useFunctionCalls() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getFunctionCalls)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getFunctionCalls)
 }

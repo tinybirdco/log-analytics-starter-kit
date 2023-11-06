@@ -25,6 +25,6 @@ async function getTopFunctions(
 }
 
 export default function useTopFunctions() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getTopFunctions)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getTopFunctions)
 }

@@ -26,6 +26,6 @@ async function getFunctionErrors(
 }
 
 export default function useFunctionErrors() {
-  const { startDate, endDate } = useDateFilter()
-  return useQuery([startDate, endDate, PIPE_NAME], getFunctionErrors)
+  const { from, to } = useDateFilter()
+  return useQuery([from, to, PIPE_NAME], getFunctionErrors)
 }
